@@ -1,136 +1,63 @@
+import img2 from "../assets/2.jpg"
+import img3 from "../assets/3.jpg"
+import img4 from "../assets/4.jpg"
+
 export const teamData = [
   {
-    img: "/img/team-1.jpg",
+    img: img2,
     name: "Matanmi Samuel",
     position: "General Secretary",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "linkedin",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-2.jpg",
+    img:img3,
     name: "Romina Hadid",
     position: "Marketing Specialist",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "linkedin",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-3.jpg",
+    img: img3,
     name: "Alexa Smith",
     position: "UI/UX Designer",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "linkedin",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-4.png",
+    img: img4,
     name: "Jenna Kardi",
     position: "Founder and CEO",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "facebook",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-4.png",
+    img: img2,
     name: "Jenna Kardi",
     position: "Founder and CEO",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "facebook",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-4.png",
+    img: img4,
     name: "Jenna Kardi",
     position: "Founder and CEO",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "facebook",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
   {
-    img: "/img/team-4.png",
+    img:img3,
     name: "Jenna Kardi",
     position: "Founder and CEO",
-    socials: [
-      {
-        color: "light-blue",
-        name: "twitter",
-      },
-      {
-        color: "blue",
-        name: "facebook",
-      },
-      {
-        color: "pink",
-        name: "dribbble",
-      },
-    ],
+    School: "Univeristy of Illorin",
+    SOO: "Ogun State",
+    No: "09876545678"
   },
 ];
 

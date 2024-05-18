@@ -5,24 +5,24 @@ import {
 export const featuresData = [
   {
     color: "gray",
-    title: "OUR MISSON",
+    title: "FELLOWSHIP",
     icon: ChatBubbleBottomCenterTextIcon,
     description:
-      "NCCF Imo State, founded in 1997; is a chapter of The Nigeria Christian Corpers' FellowSHip (NCCF) is a body of Christian Corps which is an inter-denominational, non-denominational and non-ethnic fellowship.",
+      "NCCF Imo State, unites individuals in faith, fostering spritual growth through prayer meetings, Bible studies, and worship services, encouraging mutual support and shared Christiann values.",
   },
   {
     color: "gray",
-    title: "WELCOME TO NCCF EBONYI",
+    title: "ORGANIZATION",
     icon: ChatBubbleBottomCenterTextIcon,
     description:
-      "The National delegates welcome you",
+      "As a legally registered entity with the government, NCCF operates with a structured governance system, defined roles, and committees for effective management of its activities.",
   },
   {
     color: "gray",
-    title: "OUR VISION",
+    title: "FAMILY",
     icon: ChatBubbleBottomCenterTextIcon,
     description:
-      "To ensure that all corps members encouter Jesus Christ and are effectively equipped to preach the gospel and discipline men everywhere in Nigeria",
+      "NCCF provides a nurturing supportive environment where members care for each other emotionally, spiritually, and creating a strong sense of community (Where members feel valued and loved) and belonging",
   },
 ];
 
