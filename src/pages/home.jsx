@@ -14,17 +14,18 @@ import Slider from 'react-slick';
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
 import { FeatureCard, TeamCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData} from "@/data";
+import { featuresData, teamData, contactData } from "@/data";
 import testimonialData from "@/data/testimonial-data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {GoArrowLeft, GoArrowRight} from "react-icons/go"
+import { GoArrowLeft, GoArrowRight } from "react-icons/go"
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import FontAwesome CSS
 import TestimonyCard from "@/widgets/cards/testimony-card";
 
 
 export function Home() {
   const sliderRef = React.useRef(null);
+  const sliderRef2 = React.useRef(null);
   const settings = {
     dots: true,
     infinite: true,
@@ -58,16 +59,16 @@ export function Home() {
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
               <Typography variant="lead" color="white" className="opacity-80">
-                Welcome To 
+                Welcome To
               </Typography>
               <Typography
                 variant="h1"
                 color="white"
                 className="mb-6 font-black"
               >
-               NCCF IMO STATE
+                NCCF IMO STATE
               </Typography>
-              
+
             </div>
           </div>
         </div>
@@ -146,73 +147,73 @@ export function Home() {
             NCCF COMPRISES OF MULTIPLE FAMILIES
           </PageTitle>
           <div className="mt-24">
-      <Slider ref={sliderRef} {...settings}>
-        {teamData.map(({ img, name, position, socials }) => (
-          <div key={name} className="p-2">
-            <TeamCard
-              img={img}
-              name={name}
-              position={position}
-              socials={
-                <div className="flex items-center gap-2">
-                  {socials.map(({ color, name }) => (
-                    <IconButton key={name} color={color} variant="text">
-                      <i className={`fa-brands text-xl fa-${name}`} />
-                    </IconButton>
-                  ))}
+            <Slider ref={sliderRef2} {...settings}>
+              {teamData.map(({ img, name, position, socials }) => (
+                <div key={name} className="p-2">
+                  <TeamCard
+                    img={img}
+                    name={name}
+                    position={position}
+                    socials={
+                      <div className="flex items-center gap-2">
+                        {socials.map(({ color, name }) => (
+                          <IconButton key={name} color={color} variant="text">
+                            <i className={`fa-brands text-xl fa-${name}`} />
+                          </IconButton>
+                        ))}
+                      </div>
+                    }
+                  />
                 </div>
-              }
-            />
+              ))}
+            </Slider>
+            <div className="flex justify-between mt-4">
+
+
+              <GoArrowLeft size={30}
+                onClick={() => sliderRef2.current.slickPrev()}
+
+              /><GoArrowRight size={30}
+                onClick={() => sliderRef2.current.slickNext()}
+
+              />
+
+            </div>
           </div>
-        ))}
-      </Slider>
-      <div className="flex justify-between mt-4">
-        
-        
-        <GoArrowLeft size={30}
-          onClick={() => sliderRef.current.slickPrev()}
-          
-        /><GoArrowRight size={30}
-          onClick={() => sliderRef.current.slickNext()}
-         
-       / >
-         
-      </div>
-    </div>
         </div>
       </section>
 
       <section className="px-4 container-fluid pt-10 pb-48">
-      <div className=" mx-auto w-[85%]">
+        <div className=" mx-auto w-[85%]">
           <PageTitle section="Testimonials" heading="">
             Testimonies shared by our past members
           </PageTitle>
-      <Slider ref={sliderRef} {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {testimonialData.map(({ color, title, icon, description }) => (
               <div className="p-2">
-              <TestimonyCard
-                key={title}
-                color={color}
-                title={title}
-                icon={React.createElement(icon, {
-                  className: "w-5 h-5 text-white",
-                })}
-                description={description}
-              /></div>
+                <TestimonyCard
+                  key={title}
+                  color={color}
+                  title={title}
+                  icon={React.createElement(icon, {
+                    className: "w-5 h-5 text-white",
+                  })}
+                  description={description}
+                /></div>
             ))}
-            </Slider>
-            <div className="flex justify-between mt-4">
-        
-        
-        <GoArrowLeft size={30}
-          onClick={() => sliderRef.current.slickPrev()}
-          
-        /><GoArrowRight size={30}
-          onClick={() => sliderRef.current.slickNext()}
-         
-       / >
-         </div>
-      </div>
+          </Slider>
+          <div className="flex justify-between mt-4">
+
+
+            <GoArrowLeft size={30}
+              onClick={() => sliderRef.current.slickPrev()}
+
+            /><GoArrowRight size={30}
+              onClick={() => sliderRef.current.slickNext()}
+
+            />
+          </div>
+        </div>
       </section>
       <section className="relative bg-white py-24 px-4">
         <div className="container mx-auto">
