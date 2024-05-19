@@ -23,15 +23,16 @@ import {GoArrowLeft, GoArrowRight} from "react-icons/go"
 import img1 from "../assets/1.jpg"
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import FontAwesome CSS
 import TestimonyCard from "@/widgets/cards/testimony-card";
+import ContentTransition from "@/components/Families";
 
 
 export function Home() {
   const sliderRef = React.useRef(null);
   const settings = {
-    dots: true,
+    
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
       {
@@ -53,7 +54,7 @@ export function Home() {
 
   return (
     <>
-      <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
+      <div  className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32">
         <div className="absolute top-0 h-full w-full bg-[url('/img/background-3.png')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
         <div className="max-w-8xl container relative mx-auto">
@@ -133,46 +134,14 @@ export function Home() {
                   <Typography className="font-normal text-blue-gray-500">
                     Our core mission is radical Evangelism especially to the rural areas in our respective states.
                     This is to keep in line the Spirit of prophecy that gave birth to NCCF; hence the mission of Rural Rugged Evangelism.
-                                      </Typography>
+                          </Typography>
                 </CardBody>
               </Card>
             </div>
           </div>
         </div>
       </section>
-      <section className="px-4 w-full flex justify-center container pt-20 pb-16">
-        <div className=" mx-auto w-[85%]">
-          <PageTitle section="Meet Our Ministers" heading="">
-            NCCF COMPRISES OF MULTIPLE FAMILIES
-          </PageTitle>
-          <div className="mt-24">
-      <Slider ref={sliderRef} {...settings}>
-        {teamData.map(({ img, name, position, School, SOO }) => (
-          <div key={name} className="p-">
-            <TeamCard
-              img={img}
-              name={name}
-              position={position}
-              
-            />
-          </div>
-        ))}
-      </Slider>
-      <div className="flex justify-between mt-4">
-        
-        
-        <GoArrowLeft size={30}
-          onClick={() => sliderRef.current.slickPrev()}
-          
-        /><GoArrowRight size={30}
-          onClick={() => sliderRef.current.slickNext()}
-         
-       / >
-         
-      </div>
-    </div>
-        </div>
-      </section>
+      <ContentTransition />
 
       <section className="px-4 container-fluid pt-10 pb-48">
       <div className=" mx-auto w-[85%]">
@@ -206,22 +175,31 @@ export function Home() {
          </div>
       </div>
       </section>
-      <section className="relative bg-white py-24 px-4">
-        <div className="container mx-auto">
-          <PageTitle section="Co-Working" heading="Build something">
-            Put the potentially record low maximum sea ice extent tihs year down
-            to low ice. According to the National Oceanic and Atmospheric
-            Administration, Ted, Scambos.
-          </PageTitle>
+      <section className="relative w-full bg-white py-24 px-4">
+        <div className="w-full justify-center ">
+          <div className="flex w-full justify-center">
+            <div className="w-[85%]">
+ <h1 className="text-[20px] font-semibold">NCCF Supreme Task</h1>
+            <h1 className="text-[25px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>           
+            <p className="text-[15px] w-[100%]">
+              The supreme task of the Nigeria Christian Corper's Fellowship(NCCF) is known as Rural Rigged Evangelism. This mission 
+              is the responsibilty of every Jesus Corper withing the NCCF community.
+         
+            </p>
+            </div>
+            
+          </div>
+           
+           
           <div className="mx-auto mt-20 mb-48 grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
             {contactData.map(({ title, icon, description }) => (
               <Card
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="text-center text-blue-gray-900"
+                className="text-cente text-[12px] text-blue-gray-900"
               >
-                <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
+                <div className="mx-aut mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
                     className: "w-5 h-5 text-white",
                   })}
@@ -229,7 +207,7 @@ export function Home() {
                 <Typography variant="h5" color="blue-gray" className="mb-2">
                   {title}
                 </Typography>
-                <Typography className="font-normal text-blue-gray-500">
+                <Typography className=" text-[12px] text-blue-gray-500">
                   {description}
                 </Typography>
               </Card>

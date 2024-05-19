@@ -6,22 +6,22 @@ import {
 
 export const contactData = [
   {
-    title: "Excelent Services",
+    title: "Rural Rugged",
     icon: BriefcaseIcon,
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+      "This term encapsulate the specific mission of evangelizing in rural and remote areas of Nigeria. These regions often lack access to mainstream religious services and are considered unreached in terms of Christian outreach.",
   },
   {
-    title: "Grow Your Market",
+    title: "Responsibility of Jesus Corper's",
     icon: ChartBarIcon,
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+      "Within the NCCF community, every memeber, referred to as a Jesus Corper is entrusted with the responsibility of participating in Rural Rugged Evangelism. This underscores the collective effort required to fulfill the mission",
   },
   {
-    title: "Launch Time",
+    title: "Mission Objective",
     icon: PlayIcon,
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+      "The primary objective of Rural Rugged Evangelism is to bring the message of God's glory and salvation to souls in remote and undeserved areas. This aligns with the broader mission of NCCF to spread the Chirstian faith and impact society.",
   },
 ];
 
