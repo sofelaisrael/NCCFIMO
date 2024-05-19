@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardBody,
@@ -9,14 +8,17 @@ import {
 export function TestimonyCard({ color, icon, title, description }) {
   return (
     <Card className="rounded-sm border shadow-lg shadow-gray-500/10">
-      <CardBody className="px-8 text-center">
-<Typography className="font-normal text-blue-gray-600 pb-2">
-          {description}
+      <CardBody className="px-8">
+        <div className="flex justify-center items-center text-center h-16">
+          <Typography className="font-normal text-blue-gray-600 pb-2" >
+            <h4>
+              {description}
+            </h4>
+          
         </Typography>
-
-
-<div className="flex items-center pt-5 border-t ">
-  
+        </div>
+        <div className="flex justify-center border-t h-10 py-6 pt-2 mb-2 text-center">
+          {/*   
         <IconButton
           variant="gradient"
           size="lg"
@@ -24,12 +26,11 @@ export function TestimonyCard({ color, icon, title, description }) {
           className="pointer-events-none mb-6 rounded-full"
         >
           {icon}
-        </IconButton>
-        <Typography variant="h6" className="mb-2" color="blue-gray">
-          {title}
-        </Typography>
-</div>
-        
+        </IconButton> */}
+          <Typography className="w-auto" color="blue-gray" variant="h6">
+            {title}
+          </Typography>
+        </div>
       </CardBody>
     </Card>
   );

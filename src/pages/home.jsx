@@ -9,7 +9,12 @@ import {
   Input,
   Textarea,
   Checkbox,
+
 } from "@material-tailwind/react";
+import img1 from '@/assets/1.jpg'
+import {
+  ChatBubbleBottomCenterTextIcon,
+} from "@heroicons/react/24/solid";
 import Slider from 'react-slick';
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
@@ -18,7 +23,7 @@ import { featuresData, teamData, contactData } from "@/data";
 import testimonialData from "@/data/testimonial-data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go"
+import {GoArrowLeft, GoArrowRight} from "react-icons/go"
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import FontAwesome CSS
 import TestimonyCard from "@/widgets/cards/testimony-card";
 
@@ -27,6 +32,29 @@ export function Home() {
   const sliderRef = React.useRef(null);
   const sliderRef2 = React.useRef(null);
   const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const settings2 = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -98,17 +126,16 @@ export function Home() {
                 className="mb-3 font-bold"
                 color="blue-gray"
               >
-                Working with us is a pleasure
+               ABOUT NCCF IMO
               </Typography>
               <Typography className="mb-8 font-normal text-blue-gray-500">
-                Don't let your uses guess by attaching tooltips and popoves to
-                any element. Just make sure you enable them first via
-                JavaScript.
+                NCCF IMO is a chapted of the Nigeria Christian Corpers' Fellowship(NCCF). The fellowship is made up of
+                Christian Corps members and is characterized by its inter-denominational nature, meaning it includes members from various Christian denominations.
+               It is non-denominational and non-ethnic, promoting unity among Christians from all background.
                 <br />
                 <br />
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. Just make sure you enable them first via JavaScript.
+                The fellowship operates independently, not being affiliated with or financially supported by any individual or organization
+                withing Nigeria or internationally
               </Typography>
               <Button variant="filled">read more</Button>
             </div>
@@ -117,69 +144,59 @@ export function Home() {
                 <CardHeader floated={false} className="relative h-56">
                   <img
                     alt="Card Image"
-                    src="/img/teamwork.png"
+                    src={img1}
                     className="h-full w-full"
                   />
                 </CardHeader>
                 <CardBody>
-                  <Typography variant="small" color="blue-gray" className="font-normal">Enterprise</Typography>
+                  <Typography variant="small" color="blue-gray" className="font-normal">NCCF IMO</Typography>
                   <Typography
                     variant="h5"
                     color="blue-gray"
                     className="mb-3 mt-2 font-bold"
                   >
-                    Top Notch Services
+                    
                   </Typography>
                   <Typography className="font-normal text-blue-gray-500">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
-                  </Typography>
+                    Our core mission is radical Evangelism especially to the rural areas in our respective states.
+                    This is to keep in line the Spirit of prophecy that gave birth to NCCF; hence the mission of Rural Rugged Evangelism.
+                                      </Typography>
                 </CardBody>
               </Card>
             </div>
           </div>
         </div>
       </section>
-      <section className="px-4 container pt-20 pb-16">
+      <section className="px-4 w-full flex justify-center container pt-20 pb-16">
         <div className=" mx-auto w-[85%]">
           <PageTitle section="Meet Our Ministers" heading="">
             NCCF COMPRISES OF MULTIPLE FAMILIES
           </PageTitle>
           <div className="mt-24">
-            <Slider ref={sliderRef2} {...settings}>
-              {teamData.map(({ img, name, position, socials }) => (
-                <div key={name} className="p-2">
-                  <TeamCard
-                    img={img}
-                    name={name}
-                    position={position}
-                    socials={
-                      <div className="flex items-center gap-2">
-                        {socials.map(({ color, name }) => (
-                          <IconButton key={name} color={color} variant="text">
-                            <i className={`fa-brands text-xl fa-${name}`} />
-                          </IconButton>
-                        ))}
-                      </div>
-                    }
-                  />
-                </div>
-              ))}
-            </Slider>
-            <div className="flex justify-between mt-4">
-
-
-              <GoArrowLeft size={30}
-                onClick={() => sliderRef2.current.slickPrev()}
-
-              /><GoArrowRight size={30}
-                onClick={() => sliderRef2.current.slickNext()}
-
-              />
-
-            </div>
+      <Slider ref={sliderRef} {...settings}>
+        {teamData.map(({ img, name, position }) => (
+          <div key={name} className="p-2">
+            <TeamCard
+              img={img}
+              name={name}
+              position={position}
+            />
           </div>
+        ))}
+      </Slider>
+      <div className="flex justify-between mt-4">
+        
+        
+        <GoArrowLeft size={30}
+          onClick={() => sliderRef.current.slickPrev()}
+          
+        /><GoArrowRight size={30}
+          onClick={() => sliderRef.current.slickNext()}
+         
+       / >
+         
+      </div>
+    </div>
         </div>
       </section>
 
@@ -188,16 +205,13 @@ export function Home() {
           <PageTitle section="Testimonials" heading="">
             Testimonies shared by our past members
           </PageTitle>
-          <Slider ref={sliderRef} {...settings}>
-            {testimonialData.map(({ color, title, icon, description }) => (
+          <Slider ref={sliderRef2} {...settings2}>
+            {testimonialData.map(({ color, title, description }) => (
               <div className="p-2">
                 <TestimonyCard
                   key={title}
                   color={color}
                   title={title}
-                  icon={React.createElement(icon, {
-                    className: "w-5 h-5 text-white",
-                  })}
                   description={description}
                 /></div>
             ))}
@@ -206,10 +220,10 @@ export function Home() {
 
 
             <GoArrowLeft size={30}
-              onClick={() => sliderRef.current.slickPrev()}
+              onClick={() => sliderRef2.current.slickPrev()}
 
             /><GoArrowRight size={30}
-              onClick={() => sliderRef.current.slickNext()}
+              onClick={() => sliderRef2.current.slickNext()}
 
             />
           </div>
