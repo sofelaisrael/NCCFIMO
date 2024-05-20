@@ -1,7 +1,11 @@
-*{
+body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+#root{
+    overflow-x: hidden;
 }
 .content{
     z-index: 100;

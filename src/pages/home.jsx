@@ -208,7 +208,7 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="px-4 w-full flex justify-center pt-20 pb-16">
+      <section className="w-full flex justify-center pt-20 pb-16">
         <div className=" mx-auto w-[85%]">
           <PageTitle section="Meet Our Ministers" heading="">
             NCCF COMPRISES OF MULTIPLE FAMILIES
@@ -241,7 +241,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="px-4 container-fluid pt-10 pb-48">
+      <section className="pt-10 pb-48">
         <div className=" mx-auto w-[85%]">
           <PageTitle section="Testimonials" heading="">
             Testimonies shared by our past members
@@ -267,12 +267,12 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="relative w-full bg-white py-24 px-4">
-        <div className="w-full justify-center ">
-          <div className="flex w-full justify-center">
-            <div className="w-[85%]">
-              <h1 className="text-[30px] font-semibold">NCCF Supreme Task</h1>
-              <h1 className="text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
+      <section className="px-6 relative w-full bg-white py-24">
+        <div className="w-full">
+          <div className="w-full text-center md:text-left px-8">
+            <div className="w-[100%] md:w-[85%]">
+              <h1 className="text-[20px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
+              <h1 className="text-[24px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
               <p className="text-[15px] w-[100%]">
                 The supreme task of the Nigeria Christian Corper's Fellowship(NCCF) is known as Rural Rigged Evangelism. This mission
                 is the responsibilty of every Jesus Corper withing the NCCF community.
@@ -283,15 +283,15 @@ export function Home() {
           </div>
 
 
-          <div className="w-[85%] mx-auto mt-20 mb-48 max-w-5xl flex gap-12 justify-evenly flex-wrap">
+          <div className="w-[85%] mx-auto mt-20 mb-48 max-w-5xl flex gap-5 justify-evenly flex-wrap">
             {contactData.map(({ title, icon, description }) => (
               <Card
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="flex flex-col items-center text-[12px] text-blue-gray-900 max-w-[250px]"
+                className="flex flex-col items-center text-[12px] text-blue-gray-900 max-w-[300px]"
               >
-                <div className="mx-aut mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
+                <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
                     className: "w-5 h-5 text-white",
                   })}
