@@ -31,7 +31,7 @@
     },
     {
       color: "gray",
-      title: "Adepitan Oluwabusayomi Funmilayo",
+      title: "Adepitan Funmilayo Oluwabusayomi",
       description:
         "Great",
     },

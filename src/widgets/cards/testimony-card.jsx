@@ -17,7 +17,7 @@ export function TestimonyCard({ color, icon, title, description }) {
           
         </Typography>
         </div>
-        <div className="flex justify-center border-t h-10 py-6 pt-2 mb-2 text-center">
+        <div className="flex justify-center border-t h-10 py-6 pt-2 mb-2 text-center break-words text-nowrap">
           {/*   
         <IconButton
           variant="gradient"
