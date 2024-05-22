@@ -26,3 +26,9 @@ body{
         font-size: 200px;
     }
 }
+@media screen and (max-width: 500px) {
+    .from{
+        display: flex;
+        flex-direction: column;
+    }
+}

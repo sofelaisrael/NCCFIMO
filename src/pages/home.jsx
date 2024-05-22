@@ -66,6 +66,8 @@ export function Home() {
   };
   const settings2 = {
     infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -89,6 +91,8 @@ export function Home() {
 
   return (
     <>
+
+      {/* welcome page */}
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32">
         <div className="absolute top-0 h-full w-full bg-[url('/img/background-3.png')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
@@ -110,6 +114,8 @@ export function Home() {
           </div>
         </div>
       </div>
+
+      {/* features and about */}
       <section className="-mt-32 bg-white px-4 pt-4">
         <div className="container mx-auto">
           <div className="flex lg-max:flex-wrap gap-10">
@@ -143,19 +149,12 @@ export function Home() {
                 NCCF IMO is a chapted of the Nigeria Christian Corpers' Fellowship(NCCF). The fellowship is made up of
                 Christian Corps members and is characterized by its inter-denominational nature, meaning it includes members from various Christian denominations.
                 It is non-denominational and non-ethnic, promoting unity among Christians from all background.
-                
-                {shown && <p><br />
+                <p><br />
                   The fellowship operates independently, not being affiliated with or financially supported by any individual or organization
                   withing Nigeria or internationally
                 </p>
-                }
               </Typography>
-              {
-                !shown ?
-                  <Button variant="filled" onClick={() => setShown(prev => !prev)}>read more</Button>
-                  :
-                  <Button variant="filled" onClick={() => setShown(prev => !prev)}>show less</Button>
-              }
+              <Button variant="filled" onClick={() => setShown(prev => !prev)}>read more</Button>
             </div>
 
             <div className="pt-6 mx-auto h-[100%] mt-24 flex w-full justify-center px-4 lg:w-4/12 lg:mt-0">
@@ -208,14 +207,16 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* team */}
       <section className="w-full flex justify-center pt-20 pb-16">
         <div className=" mx-auto w-[85%]">
           <PageTitle section="Meet Our Ministers" heading="">
-            NCCF COMPRISES OF MULTIPLE FAMILIES
+            NCCF COMPRISES OF MULTIPLE MEMBERS
           </PageTitle>
-          <div className="mt-24">
+          <div className="mt-4">
             <Slider ref={sliderRef} {...settings}>
-              {teamData.map(({ img, name, position }) => (
+              {teamData.map(({ img, name, position, No }) => (
                 <div key={name} className="p-2">
                   <TeamCard
                     img={img}
@@ -241,7 +242,8 @@ export function Home() {
         </div>
       </section>
 
-      <section className="pt-10 pb-48">
+      {/* testimonials */}
+      <section className="pt-10 pb-30">
         <div className=" mx-auto w-[85%]">
           <PageTitle section="Testimonials" heading="">
             Testimonies shared by our past members
@@ -257,16 +259,10 @@ export function Home() {
                 /></div>
             ))}
           </Slider>
-          <div className="flex justify-between mt-4">
-            <GoArrowLeft className="" size={30}
-              onClick={() => sliderRef2.current.slickPrev()}
-            />
-            <GoArrowRight className="" size={30}
-              onClick={() => sliderRef2.current.slickNext()}
-            />
-          </div>
         </div>
       </section>
+
+      {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
         <div className="w-full">
           <div className="w-full text-center md:text-left px-8">
@@ -283,13 +279,13 @@ export function Home() {
           </div>
 
 
-          <div className="w-[85%] mx-auto mt-20 mb-48 max-w-5xl flex gap-5 justify-evenly flex-wrap">
+          <div className="w-[100%] px-10 mx-auto mt-20 flex gap-5 flex-wrap justify-evenly">
             {contactData.map(({ title, icon, description }) => (
               <Card
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="flex flex-col items-center text-[12px] text-blue-gray-900 max-w-[300px]"
+                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[300px]"
               >
                 <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
@@ -305,41 +301,10 @@ export function Home() {
               </Card>
             ))}
           </div>
-
-
-          <PageTitle section="Contact Us" heading="Want to work with us?">
-            Complete this form and we will get back to you in 24 hours.
-          </PageTitle>
-          <form className="mx-auto w-full mt-12 lg:w-5/12">
-            <div className="mb-8 flex gap-8">
-              <Input variant="outlined" size="lg" label="Full Name" />
-              <Input variant="outlined" size="lg" label="Email Address" />
-            </div>
-            <Textarea variant="outlined" size="lg" label="Message" rows={8} />
-            <Checkbox
-              label={
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center font-normal"
-                >
-                  I agree the
-                  <a
-                    href="#"
-                    className="font-medium transition-colors hover:text-gray-900"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
-                </Typography>
-              }
-              containerProps={{ className: "-ml-2.5" }}
-            />
-            <Button variant="gradient" size="lg" className="mt-8" fullWidth>
-              Send Message
-            </Button>
-          </form>
         </div>
       </section>
+
+      {/* footer */}
       <div className="bg-white">
         <Footer />
       </div>

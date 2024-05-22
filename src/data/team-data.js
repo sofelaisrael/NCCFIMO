@@ -15,7 +15,7 @@ export const teamData = [
     img:img3,
     name: "Romina Hadid",
     position: "Marketing Specialist",
-    School: "Univeristy of Illorin",
+    School: "Univeristy of Ilorin",
     SOO: "Ogun State",
     No: "09876545678"
   },

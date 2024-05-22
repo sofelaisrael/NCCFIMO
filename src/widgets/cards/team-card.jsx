@@ -17,6 +17,9 @@ export function TeamCard({ img, name, position, School, SOO, No }) {
         <Typography variant="h5" color="blue-gray" className="mb-1 text-[16px] md:text-[18px]">
           {name}
         </Typography>
+        <Typography>
+          {No}
+        </Typography>
         {position && (
           <Typography className="font-bold text-blue-gray-500 text-[12px]">
             {position}

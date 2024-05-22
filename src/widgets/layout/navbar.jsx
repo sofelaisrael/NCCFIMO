@@ -36,10 +36,6 @@ export function Navbar({ brandName, routes, action }) {
               target={target}
               className="flex items-center gap-1 p-1 font-bold"
             >
-              {icon &&
-                React.createElement(icon, {
-                  className: "w-[18px] h-[18px] opacity-75 mr-1",
-                })}
               {name}
             </a>
           ) : (
@@ -48,10 +44,6 @@ export function Navbar({ brandName, routes, action }) {
               target={target}
               className="flex items-center gap-1 p-1 font-bold"
             >
-              {icon &&
-                React.createElement(icon, {
-                  className: "w-[18px] h-[18px] opacity-75 mr-1",
-                })}
               {name}
             </Link>
           )}
@@ -65,23 +57,11 @@ export function Navbar({ brandName, routes, action }) {
       <div className="container mx-auto flex items-center justify-between text-white">
         <Link to="/">
           <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-bold">
-            {brandName}
+            NCCFIMO
           </Typography>
         </Link>
         <div className="hidden lg:block">{navList}</div>
-        <div className="hidden gap-2 lg:flex">
-          <a
-            href="https://www.material-tailwind.com/blocks?ref=mtkr"
-            target="_blank"
-          >
-            <Button variant="text" size="sm" color="white" fullWidth>
-              pro version
-            </Button>
-          </a>
-          {React.cloneElement(action, {
-            className: "hidden lg:inline-block",
-          })}
-        </div>
+        
         <IconButton
           variant="text"
           size="sm"
@@ -102,18 +82,6 @@ export function Navbar({ brandName, routes, action }) {
       >
         <div className="container mx-auto">
           {navList}
-          <a
-            href="https://www.material-tailwind.com/blocks/react?ref=mtkr"
-            target="_blank"
-            className="mb-2 block"
-          >
-            <Button variant="text" size="sm" fullWidth>
-              pro version
-            </Button>
-          </a>
-          {React.cloneElement(action, {
-            className: "w-full block",
-          })}
         </div>
       </MobileNav>
     </MTNavbar>

@@ -32,6 +32,8 @@ export function Footer({ title, description, socials, menus, copyright }) {
               ))}
             </div>
           </div>
+
+          {/* menu */}
           <div className="mx-auto mt-12 grid w-max grid-cols-2 gap-24 lg:mt-0">
             {menus.map(({ name, items }) => (
               <div key={name}>
@@ -60,9 +62,56 @@ export function Footer({ title, description, socials, menus, copyright }) {
                 </ul>
               </div>
             ))}
+
+            <div className="s">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="mb-2 block font-medium uppercase"
+              >
+                Contact Us
+              </Typography>
+              <ul className="mt-3">
+                <li>
+                  <Typography
+                    variant="small"
+                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
+                  >
+                    I: 07081659372
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="small"
+                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
+                  >
+                    P: 07041285166
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="small"
+                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
+                  >
+                    B: 08038624818
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="small"
+                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
+                  >
+                    J: 07040575402
+                  </Typography>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </div>
         <hr className="my-6 border-gray-300" />
+
+        {/* copyright */}
         <div className="flex flex-wrap items-center justify-center md:justify-between">
           <div className="mx-auto w-full px-4 text-center">
             <Typography
@@ -106,41 +155,21 @@ Footer.defaultProps = {
   ],
   menus: [
     {
-      name: "useful links",
+      name: "Navigation",
       items: [
         { name: "About Us", path: "https://www.creative-tim.com/presentation" },
         { name: "Blog", path: "https://www.creative-tim.com/blog" },
         {
-          name: "Github",
+          name: "Contact Us",
           path: "https://www.github.com/creativetimofficial/material-tailwind?ref=mtk",
         },
         {
-          name: "Free Products",
-          path: "https://www.creative-tim.com/templates/free?ref=mtk",
+          name: "Sign-in",
+          path: "/sign-in",
         },
       ],
     },
-    {
-      name: "other resources",
-      items: [
-        {
-          name: "MIT License",
-          path: "https://github.com/creativetimofficial/material-tailwind/blob/main/LICENSE.md?ref=mtk",
-        },
-        {
-          name: "Contribute",
-          path: "https://github.com/creativetimofficial/material-tailwind/blob/main/CONTRIBUTING.md?ref=mtk",
-        },
-        {
-          name: "Change Log",
-          path: "https://github.com/creativetimofficial/material-tailwind/blob/main/CHANGELOG.md?ref=mtk",
-        },
-        {
-          name: "Contact Us",
-          path: "https://creative-tim.com/contact-us?ref=mtk",
-        },
-      ],
-    },
+
   ],
   copyright: (
     <>
