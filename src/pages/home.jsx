@@ -168,8 +168,8 @@ export function Home() {
                     />
                   </div>
                   <div className="mt-4">
-                    <Typography variant="h4" color="blue-gray" className="font-normal">NCCF IMO</Typography>
-                    <Typography className="font-normal text-blue-gray-500">
+                    <Typography variant="h4" color="blue-gray" className="font-normal text-[18px] md:text-[20px]">NCCF IMO</Typography>
+                    <Typography className="font-normal text-blue-gray-500 text-[14px]">
                       Our core mission is radical Evangelism especially to the rural areas in our respective states.
                       This is to keep in line the Spirit of prophecy that gave birth to NCCF; hence the mission of Rural Rugged Evangelism.
                     </Typography>
@@ -211,7 +211,7 @@ export function Home() {
       {/* team */}
       <section className="w-full flex justify-center pt-20 pb-16">
         <div className=" mx-auto w-[85%]">
-          <PageTitle section="Meet Our Ministers" heading="">
+          <PageTitle section="Meet Our Ministers" heading="" className='text-[14px]'>
             NCCF COMPRISES OF MULTIPLE MEMBERS
           </PageTitle>
           <div className="mt-4">
@@ -245,7 +245,7 @@ export function Home() {
       {/* testimonials */}
       <section className="pt-10 pb-30">
         <div className=" mx-auto w-[85%]">
-          <PageTitle section="Testimonials" heading="">
+          <PageTitle section="Testimonials" className='text-[14px]' heading="">
             Testimonies shared by our past members
           </PageTitle>
           <Slider ref={sliderRef2} {...settings2}>

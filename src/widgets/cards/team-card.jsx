@@ -9,7 +9,7 @@ export function TeamCard({ img, name, position, School, SOO, No }) {
         alt={name}
         size=""
         variant="round"
-        className="h-[300px] shadow-lg shadow-gray-500/25 object-cover"
+        className="h-[300px] shadow-lg shadow-gray-500/25 object-top object-cover"
       />
       
 
