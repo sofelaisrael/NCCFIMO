@@ -265,7 +265,7 @@ export function Home() {
       {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
         <div className="w-full">
-          <div className="w-full text-center md:text-left px-8">
+          <div className="w-full text-center md:text-left px-0 md:px-8">
             <div className="w-[100%] md:w-[85%]">
               <h1 className="text-[20px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
               <h1 className="text-[24px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
