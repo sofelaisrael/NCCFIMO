@@ -279,7 +279,7 @@ export function Home() {
           </div>
 
 
-          <div className="w-[100%] px-10 mx-auto mt-20 flex gap-5 flex-wrap justify-evenly">
+          <div className="w-[100%] px-4 mx-auto mt-20 flex gap-5 flex-wrap justify-evenly">
             {contactData.map(({ title, icon, description }) => (
               <Card
                 key={title}
