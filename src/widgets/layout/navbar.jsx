@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+import logo from "../../assets/logo.png"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar({ brandName, routes, action }) {
@@ -56,9 +57,9 @@ export function Navbar({ brandName, routes, action }) {
     <MTNavbar color="transparent" className="p-3">
       <div className="container mx-auto flex items-center justify-between text-white">
         <Link to="/">
-          <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-bold">
-            NCCFIMO
-          </Typography>
+          <div className="h-[90px]">
+            <img className="h-full" src={logo} alt="" />
+          </div>
         </Link>
         <div className="hidden lg:block">{navList}</div>
         
