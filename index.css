@@ -49,6 +49,17 @@ body {
     transform: translateY(0);
 }
 
+.up {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 1s;
+}
+
+.set {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .right {
     opacity: 0;
     transform: translateX(100px);

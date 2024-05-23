@@ -109,6 +109,25 @@ export function Home() {
     }
   }, [])
 
+  // from up animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('set')
+        } else {
+          entry.target.classList.remove('set')
+        }
+      })
+    }, [])
+    const hidden = document.querySelectorAll('.up')
+
+    for (let i = 0; i < hidden.length; i++) {
+      const element = hidden[i];
+      observer.observe(element)
+    }
+  }, [])
+
   // opacity animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -147,13 +166,23 @@ export function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    let bg = document.querySelector('.para')
+    let dark = document.querySelector('.dar')
+    window.addEventListener('scroll', function(){
+      let val = this.window.scrollY
+      bg.style.top = val * 0.5 + 'px'
+      dark.style.top = val * 0.25 + 'px'
+    })
+  })
+
   return (
     <>
 
       {/* welcome page */}
-      <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32">
-        <div className="absolute top-0 h-full w-full bg-[url('/img/background-3.png')] bg-cover bg-center" />
-        <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
+      <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32 overflow-hidden">
+        <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para" />
+        <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center dar" />
         <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
