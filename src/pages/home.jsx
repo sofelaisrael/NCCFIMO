@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -88,6 +88,64 @@ export function Home() {
       },
     ],
   };
+  // animations
+
+  // from bottom animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('setu')
+        } else {
+          entry.target.classList.remove('setu')
+        }
+      })
+    }, [])
+    const hidden = document.querySelectorAll('.down')
+
+    for (let i = 0; i < hidden.length; i++) {
+      const element = hidden[i];
+      observer.observe(element)
+    }
+  }, [])
+
+  // opacity animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('showing')
+        } else {
+          entry.target.classList.remove('showing')
+        }
+      })
+    })
+    const hidden = document.querySelectorAll('.hidde')
+
+    for (let i = 0; i < hidden.length; i++) {
+      const element = hidden[i];
+      observer.observe(element)
+    }
+  }, [])
+
+  // from the right animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('setr')
+        } else {
+          entry.target.classList.remove('setr')
+        }
+      })
+    })
+    const hidden = document.querySelectorAll('.right')
+
+    for (let i = 0; i < hidden.length; i++) {
+      const element = hidden[i];
+      observer.observe(element)
+    }
+  }, [])
 
   return (
     <>
@@ -96,7 +154,7 @@ export function Home() {
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32">
         <div className="absolute top-0 h-full w-full bg-[url('/img/background-3.png')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
-        <div className="max-w-8xl container relative mx-auto">
+        <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
               <Typography variant="lead" color="white" className="opacity-80">
@@ -133,7 +191,7 @@ export function Home() {
           </div>
 
 
-          <div className="mt-32 flex flex-wrap h-[100%] border rounded-md pb-5">
+          <div className="mt-32 flex flex-wrap h-[100%] border rounded-md pb-5 hidde">
             <div className="mx-auto -mt-8 w-full lg:w-3/5 px-4">
               <div className="mb-6 m-0 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-gray-900 p-2 text-center shadow-lg">
                 <FingerPrintIcon className="h-8 w-8 text-white " />
@@ -210,11 +268,11 @@ export function Home() {
 
       {/* team */}
       <section className="w-full flex justify-center pt-20 pb-16">
-        <div className=" mx-auto w-[85%]">
+        <div className=" mx-auto w-[85%] right">
           <PageTitle section="Meet Our Ministers" heading="" className='text-[14px]'>
             NCCF COMPRISES OF MULTIPLE MEMBERS
           </PageTitle>
-          <div className="mt-4">
+          <div className="mt-4 down">
             <Slider ref={sliderRef} {...settings}>
               {teamData.map(({ img, name, position, No }) => (
                 <div key={name} className="p-2">
@@ -245,27 +303,33 @@ export function Home() {
       {/* testimonials */}
       <section className="pt-10 pb-30">
         <div className=" mx-auto w-[85%]">
-          <PageTitle section="Testimonials" className='text-[14px]' heading="">
+          <div className="right">
+            <PageTitle section="Testimonials" className='text-[14px]' heading="">
             Testimonies shared by our past members
           </PageTitle>
-          <Slider ref={sliderRef2} {...settings2}>
-            {testimonialData.map(({ color, title, description }) => (
-              <div className="p-2">
-                <TestimonyCard
-                  key={title}
-                  color={color}
-                  title={title}
-                  description={description}
-                /></div>
-            ))}
-          </Slider>
+          </div>
+          
+          <div className="hidde">
+            <Slider ref={sliderRef2} {...settings2}>
+              {testimonialData.map(({ color, title, description }) => (
+                <div className="p-2">
+                  <TestimonyCard
+                    key={title}
+                    color={color}
+                    title={title}
+                    description={description}
+                  /></div>
+              ))}
+            </Slider>
+          </div>
+
         </div>
       </section>
 
       {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
         <div className="w-full">
-          <div className="w-full text-center md:text-left px-0 md:px-8">
+          <div className="w-full text-center md:text-left px-0 md:px-8 right">
             <div className="w-[100%] md:w-[85%]">
               <h1 className="text-[20px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
               <h1 className="text-[24px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
@@ -285,7 +349,7 @@ export function Home() {
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[300px]"
+                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[300px] down"
               >
                 <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
