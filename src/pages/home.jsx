@@ -171,7 +171,7 @@ export function Home() {
     let dark = document.querySelector('.dar')
     window.addEventListener('scroll', function(){
       let val = this.window.scrollY
-      bg.style.top = val * 0.5 + 'px'
+      bg.style.top = val * 0.25 + 'px'
       dark.style.top = val * 0.25 + 'px'
     })
   })
