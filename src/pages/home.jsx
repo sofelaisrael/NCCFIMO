@@ -18,8 +18,8 @@ import {
 import Slider from 'react-slick';
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
-import { FeatureCard, TeamCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData } from "@/data";
+import { FeatureCard, TeamCard, DonateCard } from "@/widgets/cards";
+import { featuresData, teamData, contactData, donateData } from "@/data";
 import testimonialData from "@/data/testimonial-data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -169,9 +169,9 @@ export function Home() {
   useEffect(() => {
     let bg = document.querySelector('.para')
     let dark = document.querySelector('.dar')
-    window.addEventListener('scroll', function(){
+    window.addEventListener('scroll', function () {
       let val = this.window.scrollY
-      bg.style.top = val * 0.25 + 'px'
+      bg.style.top = val * 0 + 'px'
       dark.style.top = val * 0.25 + 'px'
     })
   })
@@ -181,7 +181,7 @@ export function Home() {
 
       {/* welcome page */}
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32 overflow-hidden">
-        <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para" />
+        <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para top-0" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center dar" />
         <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
@@ -334,16 +334,16 @@ export function Home() {
         <div className=" mx-auto w-[85%]">
           <div className="right">
             <PageTitle section="Testimonials" className='text-[14px]' heading="">
-            Testimonies shared by our past members
-          </PageTitle>
+              Testimonies shared by our past members
+            </PageTitle>
           </div>
-          
+
           <div className="hidde">
             <Slider ref={sliderRef2} {...settings2}>
-              {testimonialData.map(({ color, title, description }) => (
+              {testimonialData.map(({ color, title, description }, key) => (
                 <div className="p-2">
                   <TestimonyCard
-                    key={title}
+                    key={key}
                     color={color}
                     title={title}
                     description={description}
@@ -396,6 +396,30 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* Donation And Support */}
+      <section className="relative py-10">
+        <div className="absolute h-full w-full bg-[url('img/background-1.jpg')] bg-cover bg-center -z-10 top-0 bg-fixed" />
+
+        <div className="m-10 w-[90%] md:w-[70%] mx-auto text-center z-10 text-white right">
+          <h1 className="text-[28px]">Donations and Support</h1>
+          <Typography className="text-[20px]">
+            Feel free to use the provided bank details for your support contributions to NCCF Imo State. Thank you for your generosity and support in advancing our mission and projects.
+          </Typography>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10 px-8">
+          {donateData.map(({ title, description }) => (
+            <DonateCard
+              key={title}
+              title={title}
+              description={description}
+            />
+          ))}
+        </div>
+      </section>
+
+
 
       {/* footer */}
       <div className="bg-white">

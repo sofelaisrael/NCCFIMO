@@ -43,6 +43,10 @@ body {
     transform: translateY(50px);
     transition: all 1s;
 }
+.downdelay {
+    transition: all 1s;
+    transition-delay: 0.3s;
+}
 
 .setu {
     opacity: 1;
