@@ -399,7 +399,7 @@ export function Home() {
 
       {/* Donation And Support */}
       <section className="relative py-10">
-        <div className="absolute h-full w-full bg-[url('img/background-1.jpg')] bg-cover bg-center -z-10 top-0 bg-fixed" />
+        <div className="absolute h-full w-full bg-[url('/img/background-1.jpg')] bg-cover bg-center -z-10 top-0 bg-fixed" />
 
         <div className="m-10 w-[90%] md:w-[70%] mx-auto text-center z-10 text-white right">
           <h1 className="text-[28px]">Donations and Support</h1>
