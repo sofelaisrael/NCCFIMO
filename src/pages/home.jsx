@@ -359,12 +359,12 @@ export function Home() {
       </section>
       
       {/* Weekly activities */}
-      <section className="relative z-20 bg-black bg-gradient-to-r via-gray-800 from-black to-gray-800 p-10 my-10">
+      <section className="relative z-20 bg-black md:bg-gradient-to-r via-gray-800 from-black to-gray-800 p-10 my-10">
         <div className="right text-white text-[32px] py-7">
           <h1>Our Church Activities</h1>
         </div>
         <div className="down flex flex-col justify-between items-center relative" >
-         <div className="ri bg-white w-[100%] rounded-r-[9999px] overflow-hidden">
+         <div className="ri bg-white w-[100%] md:rounded-r-[9999px] overflow-hidden">
           {churchData.map(({ activity, day, time }) => (
             <div className="week flex px-5">
               <ActivitiesCard activity={activity} day={day} time={time} />
