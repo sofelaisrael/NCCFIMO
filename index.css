@@ -83,3 +83,8 @@ body {
 .showing {
     opacity: 1;
 }
+
+
+.bg{
+    background: linear-gradient(180deg, transparent, black, black, black, black);
+}

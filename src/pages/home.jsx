@@ -18,8 +18,8 @@ import {
 import Slider from 'react-slick';
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
-import { FeatureCard, TeamCard, DonateCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData, donateData } from "@/data";
+import { FeatureCard, TeamCard, DonateCard, ActivitiesCard } from "@/widgets/cards";
+import { featuresData, teamData, contactData, donateData, churchData } from "@/data";
 import testimonialData from "@/data/testimonial-data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -297,10 +297,13 @@ export function Home() {
 
       {/* team */}
       <section className="w-full flex justify-center pt-20 pb-16">
-        <div className=" mx-auto w-[85%] right">
-          <PageTitle section="Meet Our Ministers" heading="" className='text-[14px]'>
-            NCCF COMPRISES OF MULTIPLE MEMBERS
-          </PageTitle>
+        <div className=" mx-auto w-[85%]">
+          <div className="right">
+            <PageTitle section="Meet Our Ministers" heading="" className='text-[14px]'>
+              NCCF COMPRISES OF MULTIPLE MEMBERS
+            </PageTitle>
+          </div>
+
           <div className="mt-4 down">
             <Slider ref={sliderRef} {...settings}>
               {teamData.map(({ img, name, position, No }) => (
@@ -354,6 +357,27 @@ export function Home() {
 
         </div>
       </section>
+      
+      {/* Weekly activities */}
+      <section className="relative z-20 bg-black bg-gradient-to-r via-gray-800 from-black to-gray-800 p-10 my-10">
+        <div className="right text-white text-[32px] py-7">
+          <h1>Our Church Activities</h1>
+        </div>
+        <div className="down flex flex-col justify-between items-center relative" >
+         <div className="ri bg-white w-[100%] rounded-r-[9999px] overflow-hidden">
+          {churchData.map(({ activity, day, time }) => (
+            <div className="week flex px-5">
+              <ActivitiesCard activity={activity} day={day} time={time} />
+            </div>
+          ))}
+        </div> 
+        <div className="w-[320px] h-[320px] hidden md:flex border rounded-full overflow-hidden absolute right-8 top-[7%]">
+          <img src={img1} className="w-[100%]" alt="" />
+        </div>
+        </div>
+        
+
+      </section>
 
       {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
@@ -396,7 +420,7 @@ export function Home() {
           </div>
         </div>
       </section>
-
+ 
       {/* Donation And Support */}
       <section className="relative py-10">
         <div className="absolute h-full w-full bg-[url('/img/background-1.jpg')] bg-cover bg-center -z-10 top-0 bg-fixed" />
@@ -419,9 +443,7 @@ export function Home() {
         </div>
       </section>
 
-
-
-      {/* footer */}
+     {/* footer */}
       <div className="bg-white">
         <Footer />
       </div>
