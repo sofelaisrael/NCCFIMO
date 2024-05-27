@@ -363,7 +363,7 @@ export function Home() {
         <div className="right text-white text-[32px] py-7">
           <h1>Our Church Activities</h1>
         </div>
-        <div className="down flex flex-col justify-between items-center relative" >
+        <div className="down flex flex-col items-center relative" >
          <div className="ri bg-white w-[100%] md:rounded-r-[9999px] overflow-hidden">
           {churchData.map(({ activity, day, time }) => (
             <div className="week flex px-5">
