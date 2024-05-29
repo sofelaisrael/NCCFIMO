@@ -420,6 +420,8 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      <ContentTransition />
  
       {/* Donation And Support */}
       <section className="relative py-10">
