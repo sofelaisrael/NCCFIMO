@@ -8,7 +8,7 @@ import {
 
 export function ActivitiesCard({ day, activity, time }) {
   return (
-    <div className='flex flex-col w-[200px] md:w-[250px] text-center'>
+    <div className='flex flex-col w-[150px] md:w-[250px] text-center'>
       {/* <div className="act text-[24px]">
         {activity}
       </div>
