@@ -22,7 +22,7 @@ export function ActivitiesCard({ day, activity, time }) {
 
       <Card className="rounded-lg shadow-lg shadow-gray-500/1 gl down md:w-auto gap-2">
         <CardBody className="relative h-full flex flex-col px-0">
-          <div className="w-full h-[60px] mb-2 md:mb-0">
+          <div className="w-full h-[60px] mb-3 md:mb-0">
             <Typography variant="h5" className="text-[18px]" color="blue-gray">
               {activity}
             </Typography>
