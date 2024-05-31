@@ -67,7 +67,7 @@ const ContentTransition = () => {
         <div className="mt-24">
           <div className="flex w-full justify-between">
             <div className={`w-[50%] h-[300px] relative overflow-hidden rounded-md md:h-[400px] lg:h-[500px] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}>
-              <img src={currentData.img} className="w-full bg-cover rounded-lg top-0 absolute md:-top-10" alt={currentData.title} />
+              <img src={currentData.img} className="w-full bg-cover rounded-lg" alt={currentData.title} />
             </div>
             <div className={`w-[40%] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}>
               <h1 className="text-[16px] md:text-[20px] right">{currentData.subtitle}</h1>

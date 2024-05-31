@@ -1,19 +1,29 @@
 export const churchData = [
     {
-        activity: "Morning Devotion",
-        day: "Sunday",
-        time: '5:00AM - 7:00AM'
+        activity: "Disciplineship",
+        day: "Monday",
+        time: '5:00PM'
     },
     {
-        activity: "Morning Devotion",
-        day: "Sunday",
-        time: '5:00AM - 7:00AM'
+        activity: "State Day of Prayer and Fasting",
+        day: "Tuesday",
+        time: '8:00PM'
     },
     {
-        activity: "Bible Study",
-        day: "Friday",
-        time: '8:00PM - 9:00PM'
-    }
+        activity: "Prayer Chain",
+        day: "Thursday",
+        time: '8:00PM'
+    },
+    {
+        activity: "Varieties Night",
+        day: "Saturday",
+        time: '8:00PM'
+    },
+    {
+        activity: "State Sunday Service",
+        day: "Sunday",
+        time: '5:00PM'
+    },
 ]
 
 export default churchData

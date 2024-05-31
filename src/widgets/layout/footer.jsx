@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { Typography, IconButton } from "@material-tailwind/react";
+import { FaPhone, FaLocationArrow } from "react-icons/fa"
 
 const year = new Date().getFullYear();
 
-export function Footer({ title, description, socials, menus, copyright }) {
+export function Footer({ socials, menus, copyright }) {
   return (
     <footer className="relative px-4 pt-8 pb-6">
       <div className="container mx-auto">
@@ -13,7 +14,7 @@ export function Footer({ title, description, socials, menus, copyright }) {
               NCCFIMO
             </Typography>
             <Typography className="font-normal text-blue-gray-500 lg:w-2/5">
-            The fellowship operates independently, not being affiliated with or financially supported by any individual 
+              The fellowship operates independently, not being affiliated with or financially supported by any individual
             </Typography>
             <div className="mx-auto mt-6 mb-8 flex justify-center gap-2 md:mb-0 lg:justify-start">
               {socials.map(({ color, name, path }) => (
@@ -77,31 +78,17 @@ export function Footer({ title, description, socials, menus, copyright }) {
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
-                    I: 07081659372
+                    <FaPhone className="mr-2 inline" />
+                    B: 08037106044
                   </Typography>
                 </li>
-                <li>
+                <li className="w-[200px]">
                   <Typography
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
-                    P: 07041285166
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="small"
-                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
-                  >
-                    B: 08038624818
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="small"
-                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
-                  >
-                    J: 07040575402
+                    <FaLocationArrow className="mr-2 inline"/>
+                    Area V Estate, Behind Holy Rosary College, Portharcort Road New Owerri, Owerri Imo State.
                   </Typography>
                 </li>
               </ul>
@@ -128,9 +115,6 @@ export function Footer({ title, description, socials, menus, copyright }) {
 }
 
 Footer.defaultProps = {
-  title: "Material Tailwind",
-  description:
-    "Easy to use React components for Tailwind CSS and Material Design.",
   socials: [
     {
       color: "gray",
@@ -147,25 +131,19 @@ Footer.defaultProps = {
       name: "instagram",
       path: "https://www.instagram.com/creativetimofficial/",
     },
-    {
-      color: "black",
-      name: "github",
-      path: "https://github.com/creativetimofficial/material-tailwind",
-    },
   ],
   menus: [
     {
       name: "Navigation",
       items: [
-        { name: "About Us", path: "https://www.creative-tim.com/presentation" },
-        { name: "Blog", path: "https://www.creative-tim.com/blog" },
         {
-          name: "Contact Us",
-          path: "https://www.github.com/creativetimofficial/material-tailwind?ref=mtk",
+          name: "About",
+          path: "/",
         },
+        { name: "Profile", path: "/profile" },
         {
-          name: "Sign-in",
-          path: "/sign-in",
+          name: "Sign-up",
+          path: "/sign-up",
         },
       ],
     },
@@ -173,13 +151,13 @@ Footer.defaultProps = {
   ],
   copyright: (
     <>
-      Copyright © {year} Material Tailwind by{" "}
+      Copyright © {year} {" "}
       <a
         href="https://www.creative-tim.com?ref=mtk"
         target="_blank"
         className="text-blue-gray-500 transition-colors hover:text-blue-500"
       >
-        Creative Tim
+        NccfImo
       </a>
       .
     </>
