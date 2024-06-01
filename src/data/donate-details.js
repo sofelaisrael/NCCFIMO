@@ -22,7 +22,7 @@ import {
         
     },
     {
-      title: "For Rural Rugged, Pledges, Capitation, Outreaches, and Orientation Camp Mission",
+      title: "For Rural Rugged, Pledges, and Orientation Camp Mission",
       description: [
         "Bank Name: First Bank ",
         "Account Number: 3009411213",

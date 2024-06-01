@@ -377,9 +377,9 @@ export function Home() {
         <div className="w-full">
           <div className="w-full text-center md:text-left px-0 md:px-8 right">
             <div className="w-[100%] md:w-[85%]">
-              <h1 className="text-[20px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
-              <h1 className="text-[24px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
-              <p className="text-[15px] w-[100%]">
+              <h1 className="text-[14px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
+              <h1 className="text-[16px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
+              <p className="text-[14px] w-[100%]">
                 The supreme task of the Nigeria Christian Corper's Fellowship(NCCF) is known as Rural Rigged Evangelism. This mission
                 is the responsibilty of every Jesus Corper withing the NCCF community.
 
@@ -395,7 +395,7 @@ export function Home() {
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[300px] down"
+                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[30px] down"
               >
                 <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {

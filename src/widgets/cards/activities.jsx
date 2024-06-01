@@ -22,15 +22,15 @@ export function ActivitiesCard({ day, activity, time }) {
 
       <Card className="rounded-lg shadow-lg shadow-gray-500/1 gl down md:w-auto gap-2">
         <CardBody className="relative h-full flex flex-col px-0">
-          <div className="w-full h-[60px] mb-3 md:mb-0">
-            <Typography variant="h5" className="text-[18px]" color="blue-gray">
+          <div className="w-full h-[30px] md:h-[40px] lg:h-[60px] mb-3 md:mb-0">
+            <Typography variant="h5" className="text-[14px] md:text-[16px] lg:text-[18px]" color="blue-gray">
               {activity}
             </Typography>
           </div>
 
 
           <div className="desc">
-            <Typography className="font-normal text-blue-gray-600 text-[14px] md:text-[16px]">
+            <Typography className="font-normal text-blue-gray-600 text-[12px] md:text-[16px]">
               {day}
             </Typography>
           </div>

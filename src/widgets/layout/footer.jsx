@@ -35,7 +35,7 @@ export function Footer({ socials, menus, copyright }) {
           </div>
 
           {/* menu */}
-          <div className="mx-auto mt-12 grid w-max grid-cols-2 gap-24 lg:mt-0">
+          <div className="mx-auto mt-12 grid w-max grid-cols-2 gap-7 md:gap-24 lg:mt-0">
             {menus.map(({ name, items }) => (
               <div key={name}>
                 <Typography
@@ -72,23 +72,28 @@ export function Footer({ socials, menus, copyright }) {
               >
                 Contact Us
               </Typography>
-              <ul className="mt-3">
+              <ul className="mt-3 text-[10px]">
                 <li>
                   <Typography
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
                     <FaPhone className="mr-2 inline" />
-                    B: 08037106044
+                    <span className="text-[12px]">
+                      B: 08037106044
+                    </span>
+                    
                   </Typography>
                 </li>
-                <li className="w-[200px]">
+                <li className="w-[120px] md:w-[200px]">
                   <Typography
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
-                    <FaLocationArrow className="mr-2 inline"/>
-                    Area V Estate, Behind Holy Rosary College, Portharcort Road New Owerri, Owerri Imo State.
+                    <FaLocationArrow className="mr-2 inline" />
+                    <span className="text-[12px]">
+                      Area V Estate, Behind Holy Rosary College, Portharcort Road New Owerri, Owerri Imo State.
+                    </span>
                   </Typography>
                 </li>
               </ul>

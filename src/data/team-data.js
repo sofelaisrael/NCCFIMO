@@ -23,10 +23,10 @@ export const teamData = [
   },
   {
     img: img3,
-    name: "Alexa Smith",
-    position: "UI/UX Designer",
+    name: "AKOGWU Isaiah",
+    position: "President/Chairman",
     School: "Univeristy of Illorin",
-    SOO: "Ogun State",
+    SOO: "Benue State",
     No: "09876545678"
   },
   {
@@ -38,25 +38,9 @@ export const teamData = [
     No: "09876545678"
   },
   {
-    img: img2,
-    name: "Jenna Kardi",
-    position: "Founder and CEO",
-    School: "Univeristy of Illorin",
-    SOO: "Ogun State",
-    No: "09876545678"
-  },
-  {
-    img: img2,
-    name: "Jenna Kardi",
-    position: "Founder and CEO",
-    School: "Univeristy of Illorin",
-    SOO: "Ogun State",
-    No: "09876545678"
-  },
-  {
-    img:img3,
-    name: "Jenna Kardi",
-    position: "Founder and CEO",
+    img: img4,
+    name: "Okunola John",
+    position: "Evangelism Secretary",
     School: "Univeristy of Illorin",
     SOO: "Ogun State",
     No: "09876545678"

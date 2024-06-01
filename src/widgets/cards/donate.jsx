@@ -8,9 +8,9 @@ import {
 
 export function DonateCard({ title, description }) {
     return (
-        <Card className="rounded-lg shadow-lg shadow-gray-500/1 gl h-[200px] md:h-[250px] w-[400px] mx-auto down md:w-auto">
+        <Card className="rounded-lg shadow-lg shadow-gray-500/1 h-[200px] md:h-[250px] mx-auto down w-full">
             <CardBody className="relative h-full flex flex-col">
-                <div className="w-full px-2 mb-auto">
+                <div className="w-full mb-auto">
                     <Typography variant="h5" className="text-[18px]" color="blue-gray">
                         {title}
                     </Typography>
