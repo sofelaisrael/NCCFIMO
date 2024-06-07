@@ -16,10 +16,16 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/solid";
 import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/effect-cards'
+import 'swiper/css/effect-creative'
+import { EffectCards, Navigation, EffectCreative } from "swiper/modules"
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
-import { FeatureCard, TeamCard, DonateCard, ActivitiesCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData, donateData, churchData } from "@/data";
+import { FeatureCard, TeamCard, DonateCard, EventCard } from "@/widgets/cards";
+import { featuresData, teamData, contactData, donateData, eventData } from "@/data";
 import testimonialData from "@/data/testimonial-data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -90,7 +96,7 @@ export function Home() {
   };
   // animations
 
-  // from bottom animation
+  // // from bottom animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry) => {
@@ -109,7 +115,7 @@ export function Home() {
     }
   }, [])
 
-  // from up animation
+  // // from up animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry) => {
@@ -128,7 +134,7 @@ export function Home() {
     }
   }, [])
 
-  // opacity animation
+  // // opacity animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry) => {
@@ -147,7 +153,7 @@ export function Home() {
     }
   }, [])
 
-  // from the right animation
+  // // from the right animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry) => {
@@ -166,12 +172,50 @@ export function Home() {
     }
   }, [])
 
+  function increase() {
+    let val = document.querySelectorAll('.inc')
+    let int = 2000
+    val.forEach((value) => {
+      let start = 0
+      let end = parseInt(value.textContent)
+      let duration = Math.floor(int / end)
+      let count = setInterval(() => {
+        start += 1
+        value.textContent = start
+        if (start == end) {
+          clearInterval(count)
+        }
+      }, duration)
+    })
+  }
+
+
+  // // animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('inc')
+          increase()
+          observer.unobserve(entry.target)
+        }
+      })
+    })
+    const hidden = document.querySelectorAll('.increase')
+
+    for (let i = 0; i < hidden.length; i++) {
+      const element = hidden[i];
+      observer.observe(element)
+    }
+
+  })
+
   useEffect(() => {
     let bg = document.querySelector('.para')
     let dark = document.querySelector('.dar')
     window.addEventListener('scroll', function () {
       let val = this.window.scrollY
-      bg.style.top = val * 0 + 'px'
+      bg.style.top = val * 0.5 + 'px'
       dark.style.top = val * 0.25 + 'px'
     })
   })
@@ -182,7 +226,7 @@ export function Home() {
       {/* welcome page */}
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32 overflow-hidden">
         <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para top-0" />
-        <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center dar" />
+        <div className="absolute top-0 h-full w-full bg-black/50 bg-cover bg-center dar" />
         <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
@@ -233,12 +277,12 @@ export function Home() {
                 ABOUT NCCF IMO
               </Typography>
               <Typography className="mb-8 font-normal text-blue-gray-500">
-                NCCF IMO is a chapted of the Nigeria Christian Corpers' Fellowship(NCCF). The fellowship is made up of
+                NCCF IMO is a chapter of the Nigeria Christian Corpers' Fellowship(NCCF). The fellowship is made up of
                 Christian Corps members and is characterized by its inter-denominational nature, meaning it includes members from various Christian denominations.
                 It is non-denominational and non-ethnic, promoting unity among Christians from all background.
                 <p><br />
                   The fellowship operates independently, not being affiliated with or financially supported by any individual or organization
-                  withing Nigeria or internationally
+                  within Nigeria or internationally
                 </p>
               </Typography>
               <Button variant="filled" onClick={() => setShown(prev => !prev)}>read more</Button>
@@ -258,7 +302,6 @@ export function Home() {
                     <Typography variant="h4" color="blue-gray" className="font-normal text-[18px] md:text-[20px]">NCCF IMO</Typography>
                     <Typography className="font-normal text-blue-gray-500 text-[14px]">
                       Our core mission is radical Evangelism especially to the rural areas in our respective states.
-                      This is to keep in line the Spirit of prophecy that gave birth to NCCF; hence the mission of Rural Rugged Evangelism.
                     </Typography>
                   </div>
                 </CardBody>
@@ -293,6 +336,20 @@ export function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Events */}
+      <section className="p-10 my-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10">
+          {eventData.map(({ name, number }) => (
+            <div className="flex justify-between items-center h-[50px]">
+              <span className=" uppercase" key={number}>{name}</span>
+              <span className=" text-[30px] increase">{number}</span>
+            </div>
+
+          ))}
+        </div>
+
       </section>
 
       {/* team */}
@@ -358,29 +415,48 @@ export function Home() {
         </div>
       </section>
 
-      {/* Weekly activities */}
-      <section className="relative bg-[url(@/assets/11.jpg)] bg-cover h-[100vh] bg-top z-20 my-10 flex flex-col justify-between py-20">
-        <div className="right text-white text-[32px] mb-auto text-center">
-          <h1>The Fellowship Activities</h1>
-        </div>
-        <div className="relative gap-1 mx-auto flex flex-wrap items-end justify-center h-auto" >
-            {churchData.map(({ activity, day, time }) => (
-              <div className="week flex">
-                <ActivitiesCard activity={activity} day={day} time={time} />
-              </div>
-            ))}
-        </div>
-      </section>
+      {/* <Swiper
+        effect={"creative"}
+        autoplay
+        autoplaySpeed={3}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: [0, 0, -400]
+          },
+          next: {
+            translate: ['100%', 0, 0]
+          }
+        }}
+        loop
+        navigation
+        controller={true}
+        grabCursor={true}
+        modules={[EffectCreative]}
+        className="mySwiper">
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+      </Swiper> */}
 
+      {/* Weekly activities */}
+      <section className="mt-36">
+        <div className="right w-full flex justify-center">
+          <span className="text-[25px] font-bold">Church Programs</span>
+        </div>
+        <ContentTransition />
+      </section>
+      
       {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
         <div className="w-full">
           <div className="w-full text-center md:text-left px-0 md:px-8 right">
             <div className="w-[100%] md:w-[85%]">
-              <h1 className="text-[14px] md:text-[30px] font-semibold">NCCF Supreme Task</h1>
+              <h1 className="text-[14px] md:text-[30px] font-semibold">NCCF Core Mandate</h1>
               <h1 className="text-[16px] md:text-[40px] font-bold text-black">RURAL RUGGED EVANGELISM</h1>
               <p className="text-[14px] w-[100%]">
-                The supreme task of the Nigeria Christian Corper's Fellowship(NCCF) is known as Rural Rigged Evangelism. This mission
+                The core mandate of the Nigeria Christian Corper's Fellowship(NCCF) is known as Rural Rigged Evangelism. This mission
                 is the responsibilty of every Jesus Corper withing the NCCF community.
 
               </p>

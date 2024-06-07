@@ -8,7 +8,7 @@ export const featuresData = [
     title: "FELLOWSHIP",
     icon: ChatBubbleBottomCenterTextIcon,
     description:
-      "NCCF Imo State, unites individuals in faith, fostering spritual growth through prayer meetings, Bible studies, and worship services, encouraging mutual support and shared Christiann values.",
+      "NCCF Imo State, unites individuals in faith, fostering spritual growth through prayer meetings, and worship services, encouraging mutual support and shared Christiann values.",
   },
   {
     color: "gray",

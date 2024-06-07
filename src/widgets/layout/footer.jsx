@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Typography, IconButton } from "@material-tailwind/react";
 import { FaPhone, FaLocationArrow } from "react-icons/fa"
+import { MdLocationPin, MdOutlinePhone } from "react-icons/md";
 
 const year = new Date().getFullYear();
 
@@ -8,12 +9,12 @@ export function Footer({ socials, menus, copyright }) {
   return (
     <footer className="relative px-4 pt-8 pb-6">
       <div className="container mx-auto">
-        <div className="flex flex-wrap pt-6 text-center lg:text-left">
+        <div className="flex flex-wrap lg:flex-nowrap pt-6 text-center lg:text-left">
           <div className="w-full px-4 lg:w-6/12">
             <Typography variant="h4" className="mb-4" color="blue-gray">
               NCCFIMO
             </Typography>
-            <Typography className="font-normal text-blue-gray-500 lg:w-2/5">
+            <Typography className="font-normal text-blue-gray-500 lg:w-[70%]">
               The fellowship operates independently, not being affiliated with or financially supported by any individual
             </Typography>
             <div className="mx-auto mt-6 mb-8 flex justify-center gap-2 md:mb-0 lg:justify-start">
@@ -78,7 +79,19 @@ export function Footer({ socials, menus, copyright }) {
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
-                    <FaPhone className="mr-2 inline" />
+                    <MdOutlinePhone className="mr-2 inline" />
+                    <span className="text-[12px]">
+                      J: 08151676347
+                    </span>
+                    
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="small"
+                    className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
+                  >
+                    <MdOutlinePhone className="mr-2 inline" />
                     <span className="text-[12px]">
                       B: 08037106044
                     </span>
@@ -90,7 +103,7 @@ export function Footer({ socials, menus, copyright }) {
                     variant="small"
                     className="mb-2 block font-normal text-blue-gray-500 hover:text-blue-gray-700"
                   >
-                    <FaLocationArrow className="mr-2 inline" />
+                    <MdLocationPin className="mr-2 inline" />
                     <span className="text-[12px]">
                       Area V Estate, Behind Holy Rosary College, Portharcort Road New Owerri, Owerri Imo State.
                     </span>
@@ -101,6 +114,8 @@ export function Footer({ socials, menus, copyright }) {
 
           </div>
         </div>
+
+
         <hr className="my-6 border-gray-300" />
 
         {/* copyright */}

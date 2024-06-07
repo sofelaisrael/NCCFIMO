@@ -29,66 +29,89 @@ const contentData = [
 ];
 
 const ContentTransition = () => {
-  const [currentContent, setCurrentContent] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000); // Change content every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleNext = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentContent((prevContent) => (prevContent + 1) % contentData.length);
-      setFade(true);
-    }, 500); // Duration of fade out transition
-  };
-
-  const handlePrev = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentContent((prevContent) =>
-        (prevContent - 1 + contentData.length) % contentData.length
-      );
-      setFade(true);
-    }, 500); // Duration of fade out transition
-  };
-
-  const currentData = contentData[currentContent];
-
   return (
-    <section className="px-4 w-full font-sans flex justify-center pt-20 pb-16">
-      <div className="mx-auto w-[85%]">
+    <div className="wrapper">
+      <div className="containee">
+
+        <input type="radio" name='slide' id='c1' />
+        <label htmlFor="c1" className='card' >
+          <div className="row">
+            <div className="icon">S</div>
+            <div className="description">
+              <h4>State Sunday Service</h4>
+              <p>5:00PM</p>
+            </div>
+          </div>
+        </label>
         
-        <div className="mt-24">
-          <div className="flex w-full justify-between">
-            <div className={`w-[50%] h-[300px] relative overflow-hidden rounded-md md:h-[400px] lg:h-[500px] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}>
-              <img src={currentData.img} className="w-full bg-cover rounded-lg" alt={currentData.title} />
-            </div>
-            <div className={`w-[40%] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}>
-              <h1 className="text-[16px] md:text-[20px] right">{currentData.subtitle}</h1>
-              <h1 className="text-[20px] md:text-[40px] py-3 right delay-200">{currentData.title}</h1>
-              <p className="text-[12px] md:text-[16px] py-3 right delay-300">{currentData.text}</p>
+        <input type="radio" name='slide' id='c2' />
+        <label htmlFor="c2" className='card'>
+          <div className="row">
+            <div className="icon">M</div>
+            <div className="description">
+              <h4>Disciplineship</h4>
+              <p>5:00PM</p>
             </div>
           </div>
-        </div>
-        <div className="flex justify-between items-center mt-8">
-          <button onClick={handlePrev} className="text-gray-600 hover:text-gray-800 transition-colors duration-300">
-            <GoArrowLeft />
-          </button>
-          <div className="text-[35px]">
-            0{currentContent + 1}/0{contentData.length}
+        </label>
+
+        <input type="radio" name='slide' id='c3' />
+        <label htmlFor="c3" className='card'>
+          <div className="row">
+            <div className="icon">T</div>
+            <div className="description">
+              <h4>State Sunday of Prayer and Fasting</h4>
+              <p>8:00PM</p>
+            </div>
           </div>
-          <button onClick={handleNext} className="text-gray-600 hover:text-gray-800 transition-colors duration-300">
-            <GoArrowRight />
-          </button>
-        </div>
+        </label>
+
+        <input type="radio" name='slide' id='c4' />
+        <label htmlFor="c4" className='card'>
+          <div className="row">
+            <div className="icon">W</div>
+            <div className="description">
+              <h4>Varieties Night</h4>
+              <p>8:00PM</p>
+            </div>
+          </div>
+        </label>
+
+        <input type="radio" name='slide' id='c5' />
+        <label htmlFor="c5" className='card'>
+          <div className="row">
+            <div className="icon">T</div>
+            <div className="description">
+              <h4>Prayer Chain</h4>
+              <p>8:00PM</p>
+            </div>
+          </div>
+        </label>
+
+        <input type="radio" name='slide' id='c6' />
+        <label htmlFor="c6" className='card'>
+          <div className="row">
+            <div className="icon">F</div>
+            <div className="description">
+              <h4>Community Outreach</h4>
+              <p>2:00PM</p>
+            </div>
+          </div>
+        </label>
+
+        <input type="radio" name='slide' id='c7' />
+        <label htmlFor="c7" className='card'>
+          <div className="row">
+            <div className="icon">S</div>
+            <div className="description">
+              <h4>Varieties Night</h4>
+              <p>5:00PM</p>
+            </div>
+          </div>
+        </label>
+
       </div>
-    </section>
+    </div>
   );
 };
 
