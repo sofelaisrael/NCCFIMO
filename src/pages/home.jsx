@@ -189,7 +189,6 @@ export function Home() {
     })
   }
 
-
   // // animation
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -227,7 +226,7 @@ export function Home() {
 
       {/* welcome page */}
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32 overflow-hidden">
-        <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para top-0" />
+        <div className="absolute h-full w-full bg-[url('@/assets/20.jpg')] bg-cover bg-center para top-0" />
         <div className="absolute top-0 h-full w-full bg-black/50 bg-cover bg-center dar" />
         <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
@@ -390,57 +389,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-      {/* testimonials */}
-      <section className="pt-10 pb-30">
-        <div className=" mx-auto w-[85%]">
-          <div className="right">
-            <PageTitle section="Testimonials" className='text-[14px]' heading="">
-              Testimonies shared by our past members
-            </PageTitle>
-          </div>
-
-          <div className="hidde">
-            <Slider ref={sliderRef2} {...settings2}>
-              {testimonialData.map(({ color, title, description }, key) => (
-                <div className="p-2">
-                  <TestimonyCard
-                    key={key}
-                    color={color}
-                    title={title}
-                    description={description}
-                  /></div>
-              ))}
-            </Slider>
-          </div>
-
-        </div>
-      </section>
-
-      {/* <Swiper
-        effect={"creative"}
-        autoplay
-        autoplaySpeed={3}
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: [0, 0, -400]
-          },
-          next: {
-            translate: ['100%', 0, 0]
-          }
-        }}
-        loop
-        navigation
-        controller={true}
-        grabCursor={true}
-        modules={[EffectCreative]}
-        className="mySwiper">
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper> */}
 
       {/* Weekly activities */}
       <section className="mt-36">
