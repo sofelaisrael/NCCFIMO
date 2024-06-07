@@ -198,6 +198,8 @@ export function Home() {
           entry.target.classList.add('inc')
           increase()
           observer.unobserve(entry.target)
+        } else {
+          entry.target.classList.remove('inc')
         }
       })
     })
