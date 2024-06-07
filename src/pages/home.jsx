@@ -173,7 +173,7 @@ export function Home() {
   }, [])
 
   function increase() {
-    let val = document.querySelectorAll('.inc')
+    let val = document.querySelectorAll('.inc .yoo .increase')
     let int = 2000
     val.forEach((value) => {
       let start = 0
@@ -203,7 +203,7 @@ export function Home() {
         }
       })
     })
-    const hidden = document.querySelectorAll('.increase')
+    const hidden = document.querySelectorAll('.jjc')
 
     for (let i = 0; i < hidden.length; i++) {
       const element = hidden[i];
@@ -342,9 +342,9 @@ export function Home() {
 
       {/* Events */}
       <section className="p-10 my-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10 jjc">
           {eventData.map(({ name, number }) => (
-            <div className="flex justify-between items-center h-[50px]">
+            <div className="yoo flex justify-between items-center h-[50px]">
               <span className=" uppercase" key={number}>{name}</span>
               <span className=" text-[30px] increase">{number}</span>
             </div>
