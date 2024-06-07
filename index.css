@@ -244,6 +244,7 @@ input:checked + label .icon{
     input:checked + label .icon{
         align-self: flex-end !important;
         margin: 20px 0;
+        background: transparent;
     }
     input:checked + label .description{
         align-self: flex-end !important;
