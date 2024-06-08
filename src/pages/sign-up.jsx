@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 export function SignUp() {
   return (
-    <section className="m-8 flex">
-            <div className="w-2/5 h-full hidden lg:block">
+    <section className="m-8 flex h-[90vh]">
+      <div className="w-2/5 h-full hidden lg:block">
         <img
           src="/img/pattern.png"
           className="h-full w-full object-cover rounded-3xl"
@@ -29,13 +29,14 @@ export function SignUp() {
             <Input
               size="lg"
               placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
             />
           </div>
           <Checkbox
+            className="inp"
             label={
               <Typography
                 variant="small"

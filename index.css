@@ -200,25 +200,25 @@ input:checked + label .icon{
     margin-right: 10px !important;
 }
 .card[for='c1']{
-    background-image: url(@/assets/19.jpg);
-}
-.card[for='c2']{
-    background-image: url(@/assets/16.jpg);
-}
-.card[for='c3']{
-    background-image: url(@/assets/14.jpg);
-}
-.card[for='c4']{
-    background-image: url(@/assets/20.jpg);
-}
-.card[for='c5']{
-    background-image: url(@/assets/18.jpg);
-}
-.card[for='c6']{
     background-image: url(@/assets/21.jpg);
 }
+.card[for='c2']{
+    background-image: url(@/assets/10.jpg);
+}
+.card[for='c3']{
+    background-image: url(@/assets/9.jpg);
+}
+.card[for='c4']{
+    background-image: url(@/assets/12.jpg);
+}
+.card[for='c5']{
+    background-image: url(@/assets/1.jpg);
+}
+.card[for='c6']{
+    background-image: url(@/assets/11.jpg);
+}
 .card[for='c7']{
-    background-image: url(@/assets/17.jpg);
+    background-image: url(@/assets/build.jpg);
 }
 
 
@@ -259,4 +259,9 @@ input:checked + label .icon{
         flex-direction: column;
         gap: 10px;
     }
+}
+
+
+.inp{
+    display: block;
 }

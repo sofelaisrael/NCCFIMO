@@ -358,7 +358,6 @@ export function Home() {
         <div className=" mx-auto w-[85%]">
           <div className="right">
             <PageTitle section="NCCF IMO EXECUTIVES" heading="" className='text-[14px]'>
-              NCCF COMPRISES OF MULTIPLE MEMBERS
             </PageTitle>
           </div>
 
@@ -415,23 +414,23 @@ export function Home() {
           </div>
 
 
-          <div className="w-[100%] mx-auto mt-20 flex gap-5 flex-wrap justify-evenly">
-            {contactData.map(({ title, icon, description }) => (
+          <div className="w-[100%] mt-20 flex flex-wrap justify-evenly">
+            {contactData.map(({ title, icon, img, description }) => (
               <Card
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="flex flex-col items-center text-[12px] md:max-w-[250px] text-blue-gray-900 min-w-[30px] down"
+                className={`flex flex-col items-center text-[12px] md:max-w-[370px] text-blue-gray-900 px-10 py-3 down relative`}
               >
                 <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
                     className: "w-5 h-5 text-white",
                   })}
                 </div>
-                <Typography variant="h5" color="blue-gray" className="h-10 text-center">
+                <Typography variant="h5" color="black" className="h-10 text-center">
                   {title}
                 </Typography>
-                <Typography className=" text-[12px] text-blue-gray-500">
+                <Typography className="w-[100%] text-[12px] text-black">
                   {description}
                 </Typography>
               </Card>
