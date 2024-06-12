@@ -17,22 +17,6 @@ export function Footer({ socials, menus, copyright }) {
             <Typography className="font-normal text-blue-gray-500 lg:w-[70%]">
               The fellowship operates independently, not being affiliated with or financially supported by any individual
             </Typography>
-            <div className="mx-auto mt-6 mb-8 flex justify-center gap-2 md:mb-0 lg:justify-start">
-              {socials.map(({ color, name, path }) => (
-                <a
-                  key={name}
-                  href={path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <IconButton color="white" className="rounded-full shadow-none bg-transparent">
-                    <Typography color={color}>
-                      <i className={`fa-brands fa-${name}`} />
-                    </Typography>
-                  </IconButton>
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* menu */}

@@ -487,10 +487,6 @@ export function Home() {
       {/* Events */}
       <section className="p-10 my-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10 ">
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Church Anniversaries</span>
-            <span className=" text-[30px] increase">4</span>
-          </div>
           <div className="yoo flex justify-between py-3 rounded-lg items-center h-[50px] relative">
             <div className="all flex justify-between w-full relative Zones rounded-lg px-3">
               <span className="uppercase" >Zones</span>
@@ -498,7 +494,7 @@ export function Home() {
               <RxCaretRight className="caret" />
             </div>
 
-            <div className="drop hidden" >
+            <div className="drop hidden z-[1000]" >
               <ul className="border ul rounded text-black bg-white h-[300px] overflow-y-scroll"></ul>
             </div>
             <ul className="lastdrop absolute bg-white top-[100%] left-[60%]"></ul>
@@ -508,27 +504,6 @@ export function Home() {
             <span className="uppercase" >Sub Zones</span>
             <span className=" text-[30px] increase">33</span>
           </div>
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Church Picnic</span>
-            <span className=" text-[30px] increase">5</span>
-          </div>
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Vacational Bible-School</span>
-            <span className=" text-[30px] increase">21</span>
-          </div>
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Youth Mentorship</span>
-            <span className=" text-[30px] increase">3</span>
-          </div>
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Community Outreach</span>
-            <span className=" text-[30px] increase">15</span>
-          </div>
-          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
-            <span className="uppercase" >Correctional Outreach</span>
-            <span className=" text-[30px] increase">17</span>
-          </div>
-
         </div>
       </section>
 
@@ -575,10 +550,10 @@ export function Home() {
       {/* Weekly activities */}
       <section className="mt-16 p-5 h-[100vh] bg-[url('@/assets/9.jpg')] bg-cover bg-top">
         <span className="text-[32px] font-bold text-center w-full block text-white">Our Weekly Programs</span>
-        <div className="flex flex-wrap mt-[30%] justify-evenly gap-5">
+        <div className="flex flex-wrap mt-[27%] gap-2 justify-evenly ga2">
           {churchData.map((church, key) => (
-            <div key={key} className="flex flex-col justify-center items-center rounded-lg shadow-lg shadow-gray-500/1 w-[200px] h-[150px] py-10 bg-white down">
-              <div className="name font-bold text-[18px]">
+            <div key={key} className="flex flex-col justify-center items-center rounded-lg shadow-lg shadow-gray-500/1 w-[150px] md:w-[200px] lg:w-[200px] h-[150px] py-10 bg-white down">
+              <div className="name font-bold text-[18px] text-center">
                 {church.name}
               </div>
               <div className="time text-[12px]">

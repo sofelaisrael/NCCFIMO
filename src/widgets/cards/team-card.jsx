@@ -8,8 +8,8 @@ import { FaGraduationCap } from "react-icons/fa";
 
 const custom = {
   content: {
-    width: '500px',
-    height: '300px',
+    width: '420px',
+    height: '420px',
     overflow: 'hidden',
     top: '50%',
     padding: '0px',
@@ -100,23 +100,23 @@ export function TeamCard({ img, name, position, full, course, School, SOO, No })
           </div>
         </div>
 
-        <div className="det flex justify-evenly text-center h-[100px] items-center">
+        <div className="det flex justify-evenly text-center h-[100px] items-center flex-col">
 
-          <div className="sch flex flex-col items-center w-[150px] h-full">
+          <div className="sch flex flex-col items-center w-full h-full">
             <div className="icons">
               <FaGraduationCap />
             </div>
             <span>{School}</span>
           </div>
 
-          <div className="state flex flex-col items-center w-[150px] h-full">
+          <div className="state flex flex-col items-center w-full h-full">
             <div className="icons justify-self-start">
               <MdLocationPin />
             </div>
             <span>{SOO}</span>
           </div>
 
-          <div className="num flex flex-col items-center w-[150px] h-full">
+          <div className="num flex flex-col items-center w-full h-full">
             <div className="icons justify-self-start">
               <MdOutlinePhone />
             </div>
