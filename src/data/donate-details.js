@@ -22,7 +22,7 @@ import {
         
     },
     {
-      title: "For Rural Rugged, Pledges, and Orientation Camp Mission",
+      title: "Capitation: This is one month federal government allowance sown as sed of faith to furtherthe gospel",
       description: [
         "Bank Name: First Bank ",
         "Account Number: 3009411213",

@@ -16,28 +16,23 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/solid";
 import Slider from 'react-slick';
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/effect-cards'
-import 'swiper/css/effect-creative'
-import { EffectCards, Navigation, EffectCreative } from "swiper/modules"
+import Modal from "react-modal"
 import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
 import { FeatureCard, TeamCard, DonateCard, EventCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData, donateData, eventData } from "@/data";
-import testimonialData from "@/data/testimonial-data";
+import { featuresData, teamData, contactData, donateData, churchData, eventData } from "@/data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go"
+import { RxCaretRight } from "react-icons/rx"
 import img1 from "../assets/1.jpg"
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import FontAwesome CSS
-import TestimonyCard from "@/widgets/cards/testimony-card";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import ContentTransition from "@/components/Families";
 
 
 export function Home() {
   const [shown, setShown] = useState(false)
+
   const sliderRef = React.useRef(null);
   const sliderRef2 = React.useRef(null);
   const settings = {
@@ -94,6 +89,156 @@ export function Home() {
       },
     ],
   };
+  const sub = [
+    {
+      zone: 'Owerri Municipal',
+      subzones: [
+        'Umuguma',
+        "EGBU",
+        "Irete",
+      ]
+    },
+    {
+      zone: 'Owerri North',
+      subzones: [
+        'Ikeredu',
+        "Mbatoli",
+      ]
+    },
+    {
+      zone: 'Owerri South',
+      subzones: [
+        'Ngorkpala',
+        "Ulaku",
+        "Obibi Ezeama",
+        "Agbala",
+      ]
+    },
+    {
+      zone: 'Ohazi',
+      subzones: [
+        'Obinze',
+        "Obosoma",
+        "Egbema",
+      ]
+    },
+    {
+      zone: 'Nkwere',
+      subzones: [
+        'Nwageli',
+        "Isu",
+      ]
+    },
+    {
+      zone: 'Orlu',
+      subzones: [
+        'Njaba',
+        "Osu",
+      ]
+    },
+    {
+      zone: 'Ideato',
+      subzones: [
+        'Ideato North',
+        'Ideato South',
+      ]
+    },
+    {
+      zone: 'Okigwe',
+      subzones: [
+        'Okigwe',
+        'Onuimo',
+      ]
+    },
+    {
+      zone: 'Mbano',
+      subzones: [
+        'Ehime Mbano',
+        'Isiala',
+        'Ihitte Uboma',
+      ]
+    },
+    {
+      zone: 'Mbaise',
+      subzones: [
+        'Mbowu',
+        'Ezenita',
+        'Azu',
+        'Arbor',
+      ]
+    },
+    {
+      zone: 'Oguta',
+      subzones: [
+        'Oru East',
+        'Oru West',
+        'Oguta',
+        'Arbor',
+      ]
+    },
+  ]
+
+  useEffect(() => {
+    const zone = document.querySelector('.Zones')
+    const drop = document.querySelector('.drop')
+    zone.onclick = () => {
+      drop.classList.toggle('hidden')
+      let ul = drop.querySelector('ul')
+      const b4 = document.querySelectorAll('.dr')
+      b4.forEach((b) => {
+        b.remove()
+      })
+      sub.map((s) => {
+        let li = document.createElement('li')
+        li.textContent = s.zone
+        li.classList.add('dr')
+        li.onmouseenter = () => {
+          const last = document.querySelector(".lastdrop")
+          last.classList.add('border')
+          const lastli = document.querySelectorAll(".lastdrop li")
+          lastli.forEach((lli) => {
+            lli.remove()
+          })
+          s.subzones.map((subz) => {
+            let newli = document.createElement('li')
+            newli.classList.add('last')
+            newli.textContent = subz
+            last.appendChild(newli)
+          })
+
+        }
+        li.onmouseleave = () => {
+          const last = document.querySelectorAll(".lastdrop")
+          last.classList.remove('border')
+          const lastli = document.querySelectorAll(".lastdrop li")
+          lastli.forEach((lli) => {
+            lli.remove()
+          })
+        }
+
+        ul.appendChild(li)
+      })
+      window.addEventListener('click', function (e) {
+        if (!zone.contains(e.target)) {
+          drop.style.display = 'none'
+        } else {
+          drop.style.display = 'block'
+        }
+      })
+    }
+  })
+
+
+  // useEffect(() => {
+  //   let list = document.querySelectorAll('.ul li')
+  //   list.forEach((li) => {
+  //     li.addEventListener('mouseover', alert('uoo'))
+  //   })
+  // })
+
+
+
+
   // animations
 
   // // from bottom animation
@@ -226,7 +371,7 @@ export function Home() {
 
       {/* welcome page */}
       <div className="relative font-sans flex h-screen content-center items-center justify-center pt-16 pb-32 overflow-hidden">
-        <div className="absolute h-full w-full bg-[url('@/assets/20.jpg')] bg-cover bg-center para top-0" />
+        <div className="absolute h-full w-full bg-[url('@/assets/build.jpg')] bg-cover bg-center para top-0" />
         <div className="absolute top-0 h-full w-full bg-black/50 bg-cover bg-center dar" />
         <div className="max-w-8xl container relative mx-auto down">
           <div className="flex flex-wrap items-center">
@@ -341,34 +486,72 @@ export function Home() {
 
       {/* Events */}
       <section className="p-10 my-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10 jjc">
-          {eventData.map(({ name, number }) => (
-            <div className="yoo flex justify-between items-center h-[50px]">
-              <span className=" uppercase" key={number}>{name}</span>
-              <span className=" text-[30px] increase">{number}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center gap-10 ">
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Church Anniversaries</span>
+            <span className=" text-[30px] increase">4</span>
+          </div>
+          <div className="yoo flex justify-between py-3 rounded-lg items-center h-[50px] relative">
+            <div className="all flex justify-between w-full relative Zones rounded-lg px-3">
+              <span className="uppercase" >Zones</span>
+              <span className=" text-[30px] increase">10</span>
+              <RxCaretRight className="caret" />
             </div>
 
-          ))}
-        </div>
+            <div className="drop hidden" >
+              <ul className="border ul rounded text-black bg-white h-[300px] overflow-y-scroll"></ul>
+            </div>
+            <ul className="lastdrop absolute bg-white top-[100%] left-[60%]"></ul>
+          </div>
 
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Sub Zones</span>
+            <span className=" text-[30px] increase">33</span>
+          </div>
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Church Picnic</span>
+            <span className=" text-[30px] increase">5</span>
+          </div>
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Vacational Bible-School</span>
+            <span className=" text-[30px] increase">21</span>
+          </div>
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Youth Mentorship</span>
+            <span className=" text-[30px] increase">3</span>
+          </div>
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Community Outreach</span>
+            <span className=" text-[30px] increase">15</span>
+          </div>
+          <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
+            <span className="uppercase" >Correctional Outreach</span>
+            <span className=" text-[30px] increase">17</span>
+          </div>
+
+        </div>
       </section>
 
       {/* team */}
       <section className="w-full flex justify-center pt-20 pb-16">
         <div className=" mx-auto w-[85%]">
           <div className="right">
-            <PageTitle section="NCCF IMO EXECUTIVES" heading="" className='text-[14px]'>
-            </PageTitle>
+            <span className="font-bold text-[26px] text-center block">MEET OUR EXECUTIVES</span>
           </div>
 
           <div className="mt-4 down">
             <Slider ref={sliderRef} {...settings}>
-              {teamData.map(({ img, name, position, No }) => (
+              {teamData.map(({ img, name, full, course, position, School, SOO, No }) => (
                 <div key={name} className="p-2">
                   <TeamCard
                     img={img}
                     name={name}
                     position={position}
+                    School={School}
+                    SOO={SOO}
+                    No={No}
+                    course={course}
+                    full={full}
                   />
                 </div>
               ))}
@@ -390,13 +573,25 @@ export function Home() {
       </section>
 
       {/* Weekly activities */}
-      <section className="mt-36">
-        <div className="right w-full flex justify-center">
-          <span className="text-[25px] font-bold">Church Programs</span>
+      <section className="mt-16 p-5 h-[100vh] bg-[url('@/assets/9.jpg')] bg-cover bg-top">
+        <span className="text-[32px] font-bold text-center w-full block text-white">Our Weekly Programs</span>
+        <div className="flex flex-wrap mt-[30%] justify-evenly gap-5">
+          {churchData.map((church, key) => (
+            <div key={key} className="flex flex-col justify-center items-center rounded-lg shadow-lg shadow-gray-500/1 w-[200px] h-[150px] py-10 bg-white down">
+              <div className="name font-bold text-[18px]">
+                {church.name}
+              </div>
+              <div className="time text-[12px]">
+                {church.time}
+              </div>
+              <div className="day">
+                {church.day}
+              </div>
+            </div>
+          ))}
         </div>
-        <ContentTransition />
       </section>
-      
+
       {/* contact form and objective */}
       <section className="px-6 relative w-full bg-white py-24">
         <div className="w-full">

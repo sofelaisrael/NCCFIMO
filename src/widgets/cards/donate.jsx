@@ -18,8 +18,8 @@ export function DonateCard({ title, description }) {
 
 
                 <div className="desc flex flex-col">
-                    {description.map((desc) => (
-                        <Typography className="font-normal text-blue-gray-600 text-[14px] md:text-[16px]">
+                    {description.map((desc, key) => (
+                        <Typography key={key} className="font-normal text-blue-gray-600 text-[14px] md:text-[16px]">
                             {desc}
                         </Typography>
                     ))}

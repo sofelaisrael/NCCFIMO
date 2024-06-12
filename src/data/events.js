@@ -17,7 +17,7 @@ export const eventData = [
     },
     {
         number: 21,
-        name: 'Vacation Bible School'
+        name: 'Vacation Bible-School'
     },
     {
         number: 3,

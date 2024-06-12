@@ -5,9 +5,171 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { RxCaretDown } from "react-icons/rx"
 
 
 export function SignUp() {
+  const sub = [
+    {
+      zone: 'Owerri Municipal',
+      subzones: [
+        'Umuguma',
+        "EGBU",
+        "Irete",
+      ]
+    },
+    {
+      zone: 'Owerri North',
+      subzones: [
+        'Ikeredu',
+        "Mbatoli",
+      ]
+    },
+    {
+      zone: 'Owerri South',
+      subzones: [
+        'Ngorkpala',
+        "Ulaku",
+        "Obibi Ezeama",
+        "Agbala",
+      ]
+    },
+    {
+      zone: 'Ohazi',
+      subzones: [
+        'Obinze',
+        "Obosoma",
+        "Egbema",
+      ]
+    },
+    {
+      zone: 'Nkwere',
+      subzones: [
+        'Nwageli',
+        "Isu",
+      ]
+    },
+    {
+      zone: 'Orlu',
+      subzones: [
+        'Njaba',
+        "Osu",
+      ]
+    },
+    {
+      zone: 'Ideato',
+      subzones: [
+        'Ideato North',
+        'Ideato South',
+      ]
+    },
+    {
+      zone: 'Okigwe',
+      subzones: [
+        'Okigwe',
+        'Onuimo',
+      ]
+    },
+    {
+      zone: 'Mbano',
+      subzones: [
+        'Ehime Mbano',
+        'Isiala',
+        'Ihitte Uboma',
+      ]
+    },
+    {
+      zone: 'Mbaise',
+      subzones: [
+        'Mbowu',
+        'Ezenita',
+        'Azu',
+        'Arbor',
+      ]
+    },
+    {
+      zone: 'Oguta',
+      subzones: [
+        'Oru East',
+        'Oru West',
+        'Oguta',
+        'Arbor',
+      ]
+    },
+  ]
+
+  const [show, setShow] = useState(false)
+
+  const select = () => {
+    let custom = document.querySelectorAll('.zone')
+    custom.forEach(function (select) {
+      let sel = select.querySelector('.select')
+      let selspan = select.querySelector('.select span')
+      let selitems = select.querySelector('.select-items')
+      let opt = selitems.querySelectorAll('div')
+
+      if (selitems.style.display === 'block') {
+        selitems.style.display = 'none'
+      } else {
+        selitems.style.display = 'block'
+      }
+      opt.forEach(function (opti) {
+        opti.addEventListener('click', () => {
+          const sz = document.querySelector('.subselect span')
+          sz.textContent = 'Choose a Subzone'
+          selspan.textContent = opti.textContent
+          selitems.style.display = "none"
+          setShow(true)
+        })
+      })
+      window.addEventListener('click', function (e) {
+        if (!select.contains(e.target)) {
+          selitems.style.display = 'none'
+        }
+      })
+    })
+  }
+
+  const subzo = () => {
+    let custom = document.querySelectorAll('.sub')
+    custom.forEach(function (select) {
+      let sel = select.querySelector('.subselect')
+      let selspan = select.querySelector('.subselect span')
+      let selitems = select.querySelector('.sub-items')
+      let opit = selitems.querySelectorAll('div')
+      opit.forEach((op) => {
+        op.remove()
+      })
+
+      let el = document.querySelector('.select').textContent
+      const ind = sub.findIndex((elem) => elem.zone == el)
+      let suz = sub[ind].subzones
+      suz.map((s) => {
+        let div = document.createElement('div')
+        div.textContent = s
+        selitems.appendChild(div)
+      })
+
+      let opt = selitems.querySelectorAll('div')
+      if (selitems.style.display === 'block') {
+        selitems.style.display = 'none'
+      } else {
+        selitems.style.display = 'block'
+      }
+      opt.forEach(function (opti) {
+        opti.addEventListener('click', () => {
+          selspan.textContent = opti.textContent
+          selitems.style.display = "none"
+        })
+      })
+      window.addEventListener('click', function (e) {
+        if (!select.contains(e.target)) {
+          selitems.style.display = 'none'
+        }
+      })
+    })
+  }
   return (
     <section className="m-8 flex h-[90vh]">
       <div className="w-2/5 h-full hidden lg:block">
@@ -16,12 +178,12 @@ export function SignUp() {
           className="h-full w-full object-cover rounded-3xl"
         />
       </div>
-      <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
+      <div className="w-full lg:w-[70%] flex flex-col items-center justify-center">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
         </div>
-        <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
+        <div className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Your email
@@ -35,6 +197,34 @@ export function SignUp() {
               }}
             />
           </div>
+
+
+          <span className="font-semibold block mt-5">Choose your Region:</span>
+          <div className="zoneandsubzone flex flex-col gap-5">
+            <div className="zone w-full">
+              <button onClick={() => select()} className="select w-full text-left px-3">
+                <span>Choose a Zone</span>
+
+                <RxCaretDown />
+              </button>
+              <div className="select-items border">
+                {sub.map((sz) => (
+                  <div className="">{sz.zone}</div>
+                ))}
+              </div>
+            </div>
+
+            <div className="sub">
+              <button onClick={() => subzo()} disabled={show ? false : true} className="subselect w-full px-5 disabled:opacity-50">
+                <span>Choose a Subzone</span>
+
+                <RxCaretDown />
+              </button>
+              <div className="sub-items border"></div>
+            </div>
+          </div>
+
+
           <Checkbox
             className="inp"
             label={
@@ -43,7 +233,7 @@ export function SignUp() {
                 color="gray"
                 className="flex items-center justify-start font-medium"
               >
-                I agree the&nbsp;
+                I agree to the&nbsp;
                 <a
                   href="#"
                   className="font-normal text-black transition-colors hover:text-gray-900 underline"
@@ -58,33 +248,11 @@ export function SignUp() {
             Register Now
           </Button>
 
-          <div className="space-y-4 mt-8">
-            <Button size="lg" color="white" className="flex items-center gap-2 justify-center shadow-md" fullWidth>
-              <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_1156_824)">
-                  <path d="M16.3442 8.18429C16.3442 7.64047 16.3001 7.09371 16.206 6.55872H8.66016V9.63937H12.9813C12.802 10.6329 12.2258 11.5119 11.3822 12.0704V14.0693H13.9602C15.4741 12.6759 16.3442 10.6182 16.3442 8.18429Z" fill="#4285F4" />
-                  <path d="M8.65974 16.0006C10.8174 16.0006 12.637 15.2922 13.9627 14.0693L11.3847 12.0704C10.6675 12.5584 9.7415 12.8347 8.66268 12.8347C6.5756 12.8347 4.80598 11.4266 4.17104 9.53357H1.51074V11.5942C2.86882 14.2956 5.63494 16.0006 8.65974 16.0006Z" fill="#34A853" />
-                  <path d="M4.16852 9.53356C3.83341 8.53999 3.83341 7.46411 4.16852 6.47054V4.40991H1.51116C0.376489 6.67043 0.376489 9.33367 1.51116 11.5942L4.16852 9.53356Z" fill="#FBBC04" />
-                  <path d="M8.65974 3.16644C9.80029 3.1488 10.9026 3.57798 11.7286 4.36578L14.0127 2.08174C12.5664 0.72367 10.6469 -0.0229773 8.65974 0.000539111C5.63494 0.000539111 2.86882 1.70548 1.51074 4.40987L4.1681 6.4705C4.8001 4.57449 6.57266 3.16644 8.65974 3.16644Z" fill="#EA4335" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1156_824">
-                    <rect width="16" height="16" fill="white" transform="translate(0.5)" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <span>Sign in With Google</span>
-            </Button>
-            <Button size="lg" color="white" className="flex items-center gap-2 justify-center shadow-md" fullWidth>
-              <img src="/img/twitter-logo.svg" height={24} width={24} alt="" />
-              <span>Sign in With Twitter</span>
-            </Button>
-          </div>
           <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
             Already have an account?
             <Link to="/sign-in" className="text-gray-900 ml-1">Sign in</Link>
           </Typography>
-        </form>
+        </div>
 
       </div>
     </section>
