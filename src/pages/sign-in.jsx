@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
 
 export function SignIn() {
   return (
-    <section className="m-8 flex h-[90vh] justify-between gap-4">
+    <section className="m-3 md:m-8 flex h-[90vh] justify-between gap-4">
       <div className="w-full lg:w-[60%]">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-4">Sign In</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to Sign In.</Typography>
         </div>
-        <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-3/4">
+        <form className="mt-8 mb-2 mx-auto w-[95%] md:w-80 max-w-screen-lg lg:w-3/4">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Your email
@@ -46,14 +46,15 @@ export function SignIn() {
             className="inp"
             label={
               <Typography
-                variant="small"
+              variant="small"
                 color="gray"
-                className="flex items-center justify-start font-medium"
+                className="flex items-center justify-start font-medium tex"
               >
-                I agree to the&nbsp;
+                <span className="tex">I agree to the&nbsp;</span>
+                
                 <a
                   href="#"
-                  className="font-normal text-black transition-colors hover:text-gray-900 underline"
+                  className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
                 >
                   Terms and Conditions
                 </a>
@@ -72,15 +73,16 @@ export function SignIn() {
                 <Typography
                   variant="small"
                   color="gray"
-                  className="flex items-center justify-start font-medium inp"
+                  className="flex items-center justify-start font-medium inp tex"
                 >
-                  Subscribe me to newsletter
+                  <span className="tex">Subscribe me to newsletter</span>
+                  
                 </Typography>
               }
               containerProps={{ className: "-ml-2.5" }}
             />
-            <Typography variant="small" className="font-medium text-gray-900">
-              <a href="#">
+            <Typography variant="small" className="font-medium text-gray-900 tex">
+              <a href="#" className="tex">
                 Forgot Password
               </a>
             </Typography>

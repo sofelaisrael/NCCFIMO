@@ -491,7 +491,7 @@ export function Home() {
             <div className="all flex justify-between w-full relative Zones rounded-lg px-3">
               <span className="uppercase" >Zones</span>
               <span className=" text-[30px] increase">10</span>
-              <RxCaretRight className="caret" />
+              <RxCaretRight className="caret left-[40%] md:left-[20%]" />
             </div>
 
             <div className="drop hidden z-[1000]" >
@@ -621,10 +621,11 @@ export function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10 px-8">
-          {donateData.map(({ title, description }) => (
+          {donateData.map(({ title, title2, description }) => (
             <DonateCard
               key={title}
               title={title}
+              title2={title2}
               description={description}
             />
           ))}

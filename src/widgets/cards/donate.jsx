@@ -6,13 +6,16 @@ import {
     IconButton,
 } from "@material-tailwind/react";
 
-export function DonateCard({ title, description }) {
+export function DonateCard({ title, title2, description }) {
     return (
-        <Card className="rounded-lg shadow-lg shadow-gray-500/1 h-[200px] md:h-[250px] mx-auto down w-full">
+        <Card className="rounded-lg shadow-lg shadow-gray-500/1 h-[200px] md:h-[250px] mx-auto down w-full omo">
             <CardBody className="relative h-full flex flex-col">
                 <div className="w-full mb-auto">
-                    <Typography variant="h5" className="text-[18px]" color="blue-gray">
+                    <Typography variant="h5" className="text-[18px] cap" color="blue-gray">
                         {title}
+                    </Typography>
+                    <Typography variant="h5" className="text-[18px] cap" color="blue-gray">
+                        {title2}
                     </Typography>
                 </div>
 

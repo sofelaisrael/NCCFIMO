@@ -5,6 +5,7 @@ import {
   export const donateData = [
     {
       title: "For Regular Support (Tithe, Offering, Donations, Vows, etc.)",
+      title2: '',
       description: [
         "Bank Name: UBA ",
         "Account Number: 2002407140  ",
@@ -14,6 +15,7 @@ import {
     },
     {
       title: "For Project Support (Building, Bus, and Others)",
+      title2: '',
       description: [
         "Bank Name: Access Bank ",
         "Account Number: 0021954159 ",
@@ -22,7 +24,8 @@ import {
         
     },
     {
-      title: "Capitation: This is one month federal government allowance sown as sed of faith to furtherthe gospel",
+      title: "For rural rugged, pledges, outreaches, capitation, and orientation, camp mission",
+      title2: "Capitation: This is a one month federal government allowance sown as seed of faith to further the gospel",
       description: [
         "Bank Name: First Bank ",
         "Account Number: 3009411213",

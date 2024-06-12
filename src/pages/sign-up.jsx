@@ -171,19 +171,19 @@ export function SignUp() {
     })
   }
   return (
-    <section className="m-8 flex h-[90vh]">
+    <section className="m-0 md:m-8 flex h-[90vh]">
       <div className="w-2/5 h-full hidden lg:block">
         <img
           src="/img/pattern.png"
           className="h-full w-full object-cover rounded-3xl"
         />
       </div>
-      <div className="w-full lg:w-[70%] flex flex-col items-center justify-center">
+      <div className="w-full lg:w-[70%] flex flex-col items-center justify-center mt-5">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
         </div>
-        <div className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
+        <div className="mt-8 mb-2 mx-auto w-[270px] md:w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Your email
@@ -233,10 +233,11 @@ export function SignUp() {
                 color="gray"
                 className="flex items-center justify-start font-medium"
               >
-                I agree to the&nbsp;
+                <span className="tex">I agree to the&nbsp;</span>
+                
                 <a
                   href="#"
-                  className="font-normal text-black transition-colors hover:text-gray-900 underline"
+                  className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
                 >
                   Terms and Conditions
                 </a>
@@ -249,8 +250,9 @@ export function SignUp() {
           </Button>
 
           <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
-            Already have an account?
-            <Link to="/sign-in" className="text-gray-900 ml-1">Sign in</Link>
+            <span className="tex">Already have an account?</span>
+            
+            <Link to="/sign-in" className="text-gray-900 ml-1 tex">Sign in</Link>
           </Typography>
         </div>
 
