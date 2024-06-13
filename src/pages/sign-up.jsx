@@ -171,7 +171,7 @@ export function SignUp() {
     })
   }
   return (
-    <section className="m-0 md:m-8 flex h-[90vh]">
+    <section className="m-0 md:m-8 flex ">
       <div className="w-2/5 h-full hidden lg:block">
         <img
           src="/img/pattern.png"
@@ -184,7 +184,21 @@ export function SignUp() {
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
         </div>
         <div className="mt-8 mb-2 mx-auto w-[270px] md:w-80 max-w-screen-lg lg:w-1/2">
-          <div className="mb-1 flex flex-col gap-6">
+          <div className="mb-3 flex flex-col gap-6">
+            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              Enter Your Name
+            </Typography>
+            <Input
+              size="lg"
+              placeholder=""
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+          </div>
+
+          <div className="mb-3 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Your email
             </Typography>
@@ -197,6 +211,51 @@ export function SignUp() {
               }}
             />
           </div>
+
+          <div className="mb-3 flex flex-col gap-6">
+            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              Phone number
+            </Typography>
+            <Input
+              size="lg"
+              placeholder=""
+              type="tel"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+          </div>
+
+          <div className="state flex gap-2 w-full">
+            <div className="mb-1 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                State of Origin
+              </Typography>
+              <Input
+                size="lg"
+                placeholder=""
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+            </div>
+            <div className="mb-1 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                State Code
+              </Typography>
+              <Input
+                size="lg"
+                placeholder=""
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+            </div>
+          </div>
+
 
 
           <span className="font-semibold block mt-5">Choose your Region:</span>
@@ -234,7 +293,7 @@ export function SignUp() {
                 className="flex items-center justify-start font-medium"
               >
                 <span className="tex">I agree to the&nbsp;</span>
-                
+
                 <a
                   href="#"
                   className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
@@ -251,7 +310,7 @@ export function SignUp() {
 
           <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
             <span className="tex">Already have an account?</span>
-            
+
             <Link to="/sign-in" className="text-gray-900 ml-1 tex">Sign in</Link>
           </Typography>
         </div>

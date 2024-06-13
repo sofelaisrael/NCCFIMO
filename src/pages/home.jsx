@@ -181,20 +181,25 @@ export function Home() {
   useEffect(() => {
     const zone = document.querySelector('.Zones')
     const drop = document.querySelector('.drop')
-    zone.onclick = () => {
+    const last = document.querySelector(".lastdrop")
+
+    zone.onmouseenter = (e) => {
       drop.classList.toggle('hidden')
       let ul = drop.querySelector('ul')
+      drop.style.display = 'block'
+      last.style.display = 'block'
       const b4 = document.querySelectorAll('.dr')
       b4.forEach((b) => {
         b.remove()
       })
+      
       sub.map((s) => {
         let li = document.createElement('li')
         li.textContent = s.zone
         li.classList.add('dr')
         li.onmouseenter = () => {
           const last = document.querySelector(".lastdrop")
-          last.classList.add('border')
+          last.classList.add('border-b')
           const lastli = document.querySelectorAll(".lastdrop li")
           lastli.forEach((lli) => {
             lli.remove()
@@ -207,26 +212,14 @@ export function Home() {
           })
 
         }
-        li.onmouseleave = () => {
-          const last = document.querySelectorAll(".lastdrop")
-          last.classList.remove('border')
-          const lastli = document.querySelectorAll(".lastdrop li")
-          lastli.forEach((lli) => {
-            lli.remove()
-          })
-        }
-
         ul.appendChild(li)
       })
-      window.addEventListener('click', function (e) {
-        if (!zone.contains(e.target)) {
-          drop.style.display = 'none'
-        } else {
-          drop.style.display = 'block'
-        }
-      })
     }
-  })
+    zone.onmouseleave = (e) => {
+      drop.style.display = 'none'
+      last.style.display = 'none'
+    }
+  }, [])
 
 
   // useEffect(() => {
@@ -492,12 +485,11 @@ export function Home() {
               <span className="uppercase" >Zones</span>
               <span className=" text-[30px] increase">10</span>
               <RxCaretRight className="caret left-[40%] md:left-[20%]" />
+              <div className="drop hidden z-[1000]" >
+                <ul className="border ul rounded text-black bg-white h-[300px] overflow-y-scroll"></ul>
+              </div>
             </div>
-
-            <div className="drop hidden z-[1000]" >
-              <ul className="border ul rounded text-black bg-white h-[300px] overflow-y-scroll"></ul>
-            </div>
-            <ul className="lastdrop absolute bg-white top-[100%] left-[60%]"></ul>
+              <ul className="lastdrop absolute bg-white top-[100%] left-[60%]"></ul>
           </div>
 
           <div className="yoo flex justify-between p-3 rounded-lg items-center h-[50px]">
