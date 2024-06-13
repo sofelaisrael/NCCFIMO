@@ -227,32 +227,21 @@ export function SignUp() {
             />
           </div>
 
-          <div className="state flex gap-2 w-full">
-            <div className="mb-1 flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row w-full relative gap-5">
+            <div className="mb-1 flex flex-col gap-6 w-[100%]">
               <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
                 State of Origin
               </Typography>
-              <Input
-                size="lg"
-                placeholder=""
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
+              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
+ />
+              
             </div>
-            <div className="mb-1 flex flex-col gap-6">
+            <div className="mb-1 flex flex-col gap-6 w-[100%]">
               <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
                 State Code
               </Typography>
-              <Input
-                size="lg"
-                placeholder=""
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
+              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
+ />
             </div>
           </div>
 
