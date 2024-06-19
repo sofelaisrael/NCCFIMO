@@ -100,7 +100,7 @@ export function SignUp() {
   ]
 
   const [show, setShow] = useState(false)
-
+  
   const select = () => {
     let custom = document.querySelectorAll('.zone')
     custom.forEach(function (select) {
@@ -130,7 +130,7 @@ export function SignUp() {
       })
     })
   }
-
+  
   const subzo = () => {
     let custom = document.querySelectorAll('.sub')
     custom.forEach(function (select) {
@@ -141,7 +141,7 @@ export function SignUp() {
       opit.forEach((op) => {
         op.remove()
       })
-
+      
       let el = document.querySelector('.select').textContent
       const ind = sub.findIndex((elem) => elem.zone == el)
       let suz = sub[ind].subzones
@@ -150,7 +150,7 @@ export function SignUp() {
         div.textContent = s
         selitems.appendChild(div)
       })
-
+      
       let opt = selitems.querySelectorAll('div')
       if (selitems.style.display === 'block') {
         selitems.style.display = 'none'
@@ -170,6 +170,29 @@ export function SignUp() {
       })
     })
   }
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [number, setNumber] = useState('')
+  const [state, setState] = useState('');
+  const [stateCode, setStateCode] = useState('');
+  const [zone, setZone] = useState('');
+  const [subZone, setSubZone] = useState('');
+  const [terms, setTerms] = useState(true);
+  
+  const selectedZoneObj = sub.find(sz => sz.zone === zone);
+  
+  const handleClick = () => {
+    console.log({
+      'name': name,
+      'email': email,
+      'number': number,
+      'state': state,
+      'stateCode': stateCode,
+      'zone': zone,
+      'subZone': subZone
+    })
+  }
+  
   return (
     <section className="m-0 md:m-8 flex ">
       <div className="w-2/5 h-full hidden lg:block">
@@ -195,6 +218,8 @@ export function SignUp() {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
           </div>
 
@@ -209,6 +234,8 @@ export function SignUp() {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
 
@@ -224,6 +251,8 @@ export function SignUp() {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
+              value={number}
+              onChange={e => setNumber(e.target.value)}
             />
           </div>
 
@@ -232,16 +261,18 @@ export function SignUp() {
               <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
                 State of Origin
               </Typography>
-              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
- />
-              
+              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input" value={state} onChange={e => setState(e.target.value)}
+              />
+
             </div>
             <div className="mb-1 flex flex-col gap-6 w-[100%]">
               <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
                 State Code
               </Typography>
               <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
- />
+                value={stateCode}
+                onChange={e => setStateCode(e.target.value)}
+              />
             </div>
           </div>
 
@@ -250,25 +281,40 @@ export function SignUp() {
           <span className="font-semibold block mt-5">Choose your Region:</span>
           <div className="zoneandsubzone flex flex-col gap-5">
             <div className="zone w-full">
-              <button onClick={() => select()} className="select w-full text-left px-3">
-                <span>Choose a Zone</span>
-
-                <RxCaretDown />
-              </button>
-              <div className="select-items border">
+              <select
+                id="zone-select"
+                value={zone}
+                onChange={e => setZone(e.target.value)}
+                className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              >
+                <option value="">Select a zone</option>
                 {sub.map((sz) => (
-                  <div className="">{sz.zone}</div>
+                  <option key={sz.zone} value={sz.zone}>{sz.zone}</option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div className="sub">
-              <button onClick={() => subzo()} disabled={show ? false : true} className="subselect w-full px-5 disabled:opacity-50">
+              {/* <button onClick={() => subzo()} disabled={show ? false : true} className="subselect w-full px-5 disabled:opacity-50">
                 <span>Choose a Subzone</span>
 
                 <RxCaretDown />
               </button>
-              <div className="sub-items border"></div>
+              <div className="sub-items border"></div> */}
+              <div>
+                <label htmlFor="subzone-select" className="block text-sm font-medium text-gray-700">Choose a Subzone</label>
+                <select
+                  id="subzone-select"
+                  value={subZone}
+                  onChange={e => setSubZone(e.target.value)}
+                  className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                >
+                  <option value="">Select a subzone</option>
+                  {selectedZoneObj?.subzones.map((subzone) => (
+                    <option key={subzone} value={subzone}>{subzone}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -292,8 +338,9 @@ export function SignUp() {
               </Typography>
             }
             containerProps={{ className: "-ml-2.5" }}
+            checked={terms}
           />
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" fullWidth onClick={handleClick}>
             Register Now
           </Button>
 

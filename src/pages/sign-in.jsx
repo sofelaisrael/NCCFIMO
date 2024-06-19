@@ -4,10 +4,24 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 export function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+  const [terms, setTerms] = useState(true);
+
+  const handleClick = () => {
+    console.log({
+      'email': email,
+      'password': password,
+      'terms': terms
+    })
+  }
+
+
   return (
     <section className="m-3 md:m-8 flex h-[90vh] justify-between gap-4">
       <div className="w-full lg:w-[60%]">
@@ -27,6 +41,8 @@ export function SignIn() {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Password
@@ -39,6 +55,8 @@ export function SignIn() {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
 
@@ -61,8 +79,9 @@ export function SignIn() {
               </Typography>
             }
             containerProps={{ className: "-ml-2.5" }}
+            checked={terms}
           />
-          <Button className="mt-3" fullWidth>
+          <Button className="mt-3" onClick={handleClick} fullWidth>
             Sign In
           </Button>
 
