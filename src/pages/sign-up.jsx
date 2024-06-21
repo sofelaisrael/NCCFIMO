@@ -7,9 +7,13 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { RxCaretDown } from "react-icons/rx"
+import { useDispatch } from "react-redux";
+import { register } from "@/Features/User/UserSlice";
 
 
 export function SignUp() {
+
+  const dispatch = useDispatch();
   const sub = [
     {
       zone: 'Owerri Municipal',
@@ -100,7 +104,7 @@ export function SignUp() {
   ]
 
   const [show, setShow] = useState(false)
-  
+
   const select = () => {
     let custom = document.querySelectorAll('.zone')
     custom.forEach(function (select) {
@@ -130,7 +134,7 @@ export function SignUp() {
       })
     })
   }
-  
+
   const subzo = () => {
     let custom = document.querySelectorAll('.sub')
     custom.forEach(function (select) {
@@ -141,7 +145,7 @@ export function SignUp() {
       opit.forEach((op) => {
         op.remove()
       })
-      
+
       let el = document.querySelector('.select').textContent
       const ind = sub.findIndex((elem) => elem.zone == el)
       let suz = sub[ind].subzones
@@ -150,7 +154,7 @@ export function SignUp() {
         div.textContent = s
         selitems.appendChild(div)
       })
-      
+
       let opt = selitems.querySelectorAll('div')
       if (selitems.style.display === 'block') {
         selitems.style.display = 'none'
@@ -178,21 +182,48 @@ export function SignUp() {
   const [zone, setZone] = useState('');
   const [subZone, setSubZone] = useState('');
   const [terms, setTerms] = useState(true);
-  
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const selectedZoneObj = sub.find(sz => sz.zone === zone);
-  
-  const handleClick = () => {
-    console.log({
-      'name': name,
-      'email': email,
-      'number': number,
-      'state': state,
-      'stateCode': stateCode,
-      'zone': zone,
-      'subZone': subZone
-    })
+
+  const data = {
+    name: name,
+    email: email,
+    number: number,
+    state: state,
+    stateCode: stateCode,
+    zone: zone,
+    subZone: subZone,
+    password: password,
+    password_confirmation: confirmPassword
+  };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', 
+    },
+    body: JSON.stringify(data) 
+  };
+
+  const handleClick = async () => {
+   try {
+    const response  = await fetch('http://127.0.0.1:8000/api/register', options)
+
+    if(!response.ok){
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+
+    const result = await response.json();
+
+    console.log(result);
+
+   } catch (error) {
+    console.error('Error '.error)
+   }
   }
-  
+
   return (
     <section className="m-0 md:m-8 flex ">
       <div className="w-2/5 h-full hidden lg:block">
@@ -253,6 +284,40 @@ export function SignUp() {
               }}
               value={number}
               onChange={e => setNumber(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-3 flex flex-col gap-6">
+            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              Your Password
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Password"
+              type="password"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-3 flex flex-col gap-6">
+            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              Confirm Password
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="COnfirm Password"
+              type="password"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
             />
           </div>
 
