@@ -10,6 +10,8 @@ import { RxCaretDown } from "react-icons/rx"
 import { useDispatch } from "react-redux";
 import { register } from "@/Features/User/UserSlice";
 
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export function SignUp() {
 
@@ -202,222 +204,262 @@ export function SignUp() {
   const options = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json', 
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data) 
+    body: JSON.stringify(data)
   };
 
   const handleClick = async () => {
-   try {
-    const response  = await fetch('http://127.0.0.1:8000/api/register', options)
-
-    if(!response.ok){
-      throw new Error('Network response was not ok ' + response.statusText);
+    if (!name && !email && !number && !state && !stateCode && !zone && !subZone && !password && !confirmPassword) {
+      toast.error('Provide all Information')
+      return;
+    } else if (!name) {
+      toast.error('Provide Your Name');
+      return;
+    } else if (!email) {
+      toast.error('Provide Your Email');
+      return;
+    } else if (!number) {
+      toast.error('Provide your Phone NUmber')
+      return;
+    } else if (!state) {
+      toast.error('Can you tell us what state you are from')
+      return;
+    } else if (!stateCode) {
+      toast.error('Provide your State Code')
+      return;
+    } else if (!zone) {
+      toast.error('Select your Zone')
+      return;
+    } else if (!subZone) {
+      toast.error('Select your SubZone')
+      return;
+    } else if (!password) {
+      toast.error('Provide your Password')
+      return;
+    } else if (!confirmPassword) {
+      toast.error('COnfirm Your Password')
+      return;
+    } else if (password !== confirmPassword) {
+      toast.error("Your Password Don't match")
+      return;
     }
 
-    const result = await response.json();
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/register', options)
 
-    console.log(result);
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
 
-   } catch (error) {
-    console.error('Error '.error)
-   }
+      const result = await response.json();
+
+      console.log(result);
+
+      toast.success('Account Created Successfully')
+
+    } catch (error) {
+      console.error('Error '.error)
+    }
   }
 
   return (
-    <section className="m-0 md:m-8 flex ">
-      <div className="w-2/5 h-full hidden lg:block">
-        <img
-          src="/img/pattern.png"
-          className="h-full w-full object-cover rounded-3xl"
-        />
-      </div>
-      <div className="w-full lg:w-[70%] flex flex-col items-center justify-center mt-5">
-        <div className="text-center">
-          <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography>
-          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
+    <>
+      <Toaster />
+      <section className="m-0 md:m-8 flex ">
+        <div className="w-2/5 h-full hidden lg:block">
+          <img
+            src="/img/pattern.png"
+            className="h-full w-full object-cover rounded-3xl"
+          />
         </div>
-        <div className="mt-8 mb-2 mx-auto w-[270px] md:w-80 max-w-screen-lg lg:w-1/2">
-          <div className="mb-3 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Enter Your Name
-            </Typography>
-            <Input
-              size="lg"
-              placeholder=""
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
+        <div className="w-full lg:w-[70%] flex flex-col items-center justify-center mt-5">
+          <div className="text-center">
+            <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography>
+            <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
           </div>
-
-          <div className="mb-3 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Your email
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-3 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Phone number
-            </Typography>
-            <Input
-              size="lg"
-              placeholder=""
-              type="tel"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              value={number}
-              onChange={e => setNumber(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-3 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Your Password
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="Password"
-              type="password"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-3 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Confirm Password
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="COnfirm Password"
-              type="password"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-            />
-          </div>
-
-          <div className="flex flex-col md:flex-row w-full relative gap-5">
-            <div className="mb-1 flex flex-col gap-6 w-[100%]">
+          <div className="mt-8 mb-2 mx-auto w-[270px] md:w-80 max-w-screen-lg lg:w-1/2">
+            <div className="mb-3 flex flex-col gap-6">
               <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-                State of Origin
+                Enter Your Name
               </Typography>
-              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input" value={state} onChange={e => setState(e.target.value)}
-              />
-
-            </div>
-            <div className="mb-1 flex flex-col gap-6 w-[100%]">
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-                State Code
-              </Typography>
-              <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
-                value={stateCode}
-                onChange={e => setStateCode(e.target.value)}
+              <Input
+                size="lg"
+                placeholder=""
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
             </div>
-          </div>
 
-
-
-          <span className="font-semibold block mt-5">Choose your Region:</span>
-          <div className="zoneandsubzone flex flex-col gap-5">
-            <div className="zone w-full">
-              <select
-                id="zone-select"
-                value={zone}
-                onChange={e => setZone(e.target.value)}
-                className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              >
-                <option value="">Select a zone</option>
-                {sub.map((sz) => (
-                  <option key={sz.zone} value={sz.zone}>{sz.zone}</option>
-                ))}
-              </select>
+            <div className="mb-3 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                Your email
+              </Typography>
+              <Input
+                size="lg"
+                placeholder="name@mail.com"
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
             </div>
 
-            <div className="sub">
-              {/* <button onClick={() => subzo()} disabled={show ? false : true} className="subselect w-full px-5 disabled:opacity-50">
+            <div className="mb-3 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                Phone number
+              </Typography>
+              <Input
+                size="lg"
+                placeholder=""
+                type="tel"
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+                value={number}
+                onChange={e => setNumber(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                Your Password
+              </Typography>
+              <Input
+                size="lg"
+                placeholder="Password"
+                type="password"
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3 flex flex-col gap-6">
+              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                Confirm Password
+              </Typography>
+              <Input
+                size="lg"
+                placeholder="COnfirm Password"
+                type="password"
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900 inp"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="flex flex-col md:flex-row w-full relative gap-5">
+              <div className="mb-1 flex flex-col gap-6 w-[100%]">
+                <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                  State of Origin
+                </Typography>
+                <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input" value={state} onChange={e => setState(e.target.value)}
+                />
+
+              </div>
+              <div className="mb-1 flex flex-col gap-6 w-[100%]">
+                <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+                  State Code
+                </Typography>
+                <input type="text" className="border rounded h-11 px-3 !border-blue-gray-200 focus:!border-t-gray-900 w-[100%] input"
+                  value={stateCode}
+                  onChange={e => setStateCode(e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+            <span className="font-semibold block mt-5">Choose your Region:</span>
+            <div className="zoneandsubzone flex flex-col gap-5">
+              <div className="zone w-full">
+                <select
+                  id="zone-select"
+                  value={zone}
+                  onChange={e => setZone(e.target.value)}
+                  className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                >
+                  <option value="">Select a zone</option>
+                  {sub.map((sz) => (
+                    <option key={sz.zone} value={sz.zone}>{sz.zone}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="sub">
+                {/* <button onClick={() => subzo()} disabled={show ? false : true} className="subselect w-full px-5 disabled:opacity-50">
                 <span>Choose a Subzone</span>
 
                 <RxCaretDown />
               </button>
               <div className="sub-items border"></div> */}
-              <div>
-                <label htmlFor="subzone-select" className="block text-sm font-medium text-gray-700">Choose a Subzone</label>
-                <select
-                  id="subzone-select"
-                  value={subZone}
-                  onChange={e => setSubZone(e.target.value)}
-                  className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-                >
-                  <option value="">Select a subzone</option>
-                  {selectedZoneObj?.subzones.map((subzone) => (
-                    <option key={subzone} value={subzone}>{subzone}</option>
-                  ))}
-                </select>
+                <div>
+                  <label htmlFor="subzone-select" className="block text-sm font-medium text-gray-700">Choose a Subzone</label>
+                  <select
+                    id="subzone-select"
+                    value={subZone}
+                    onChange={e => setSubZone(e.target.value)}
+                    className="select w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                  >
+                    <option value="">Select a subzone</option>
+                    {selectedZoneObj?.subzones.map((subzone) => (
+                      <option key={subzone} value={subzone}>{subzone}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
+
+
+            <Checkbox
+              className="inp"
+              label={
+                <Typography
+                  variant="small"
+                  color="gray"
+                  className="flex items-center justify-start font-medium"
+                >
+                  <span className="tex">I agree to the&nbsp;</span>
+
+                  <a
+                    href="#"
+                    className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
+                  >
+                    Terms and Conditions
+                  </a>
+                </Typography>
+              }
+              containerProps={{ className: "-ml-2.5" }}
+              checked={terms}
+            />
+            <Button className="mt-6" fullWidth onClick={handleClick}>
+              Register Now
+            </Button>
+
+            <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
+              <span className="tex">Already have an account?</span>
+
+              <Link to="/sign-in" className="text-gray-900 ml-1 tex">Sign in</Link>
+            </Typography>
           </div>
 
-
-          <Checkbox
-            className="inp"
-            label={
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center justify-start font-medium"
-              >
-                <span className="tex">I agree to the&nbsp;</span>
-
-                <a
-                  href="#"
-                  className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
-                >
-                  Terms and Conditions
-                </a>
-              </Typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
-            checked={terms}
-          />
-          <Button className="mt-6" fullWidth onClick={handleClick}>
-            Register Now
-          </Button>
-
-          <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
-            <span className="tex">Already have an account?</span>
-
-            <Link to="/sign-in" className="text-gray-900 ml-1 tex">Sign in</Link>
-          </Typography>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
