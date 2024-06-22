@@ -232,7 +232,7 @@ export function SignUp() {
       toast.success('Account Created Successfully');
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
-      toast.error('Failed to create account: ' + error.message);
+      toast.error('Failed to create account');
     }
   }
 
@@ -240,7 +240,7 @@ export function SignUp() {
     <>
       <Toaster />
 
-      <section className="flex items-center">
+      <section className="flex">
         <div className="w-2/5 h-full hidden lg:block p-10">
           <img
             src="/img/pattern.png"

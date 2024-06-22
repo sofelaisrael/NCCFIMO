@@ -7,18 +7,49 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import toast, { Toaster } from 'react-hot-toast';
+
+
 
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const [terms, setTerms] = useState(true);
 
-  const handleClick = () => {
-    console.log({
-      'email': email,
-      'password': password,
-      'terms': terms
-    })
+  const data = {
+    'email': email,
+    'password': password,
+  };
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    if ( !email || !password) {
+      toast.error('Provide all Information');
+      return;
+    }
+    try {
+      const response = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error('Network response was not ok: ' + errorText);
+      }
+  
+      const result = await response.json();
+      console.log(result);
+  
+      toast.success('Login Successfully');
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+      toast.error('Failed to Login to account');
+    }
   }
 
 
@@ -50,7 +81,7 @@ export function SignIn() {
             <Input
               type="password"
               size="lg"
-              placeholder="********"
+              placeholder="*****************"
               className=" !border-t-blue-gray-200 inp focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
@@ -69,7 +100,7 @@ export function SignIn() {
                 className="flex items-center justify-start font-medium tex"
               >
                 <span className="tex">I agree to the&nbsp;</span>
-                
+
                 <a
                   href="#"
                   className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
@@ -81,7 +112,7 @@ export function SignIn() {
             containerProps={{ className: "-ml-2.5" }}
             checked={terms}
           />
-          <Button className="mt-3" onClick={handleClick} fullWidth>
+          <Button className="mt-3" onClick={handleSubmit} fullWidth>
             Sign In
           </Button>
 
@@ -95,7 +126,7 @@ export function SignIn() {
                   className="flex items-center justify-start font-medium inp tex"
                 >
                   <span className="tex">Subscribe me to newsletter</span>
-                  
+
                 </Typography>
               }
               containerProps={{ className: "-ml-2.5" }}
