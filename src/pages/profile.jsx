@@ -5,8 +5,16 @@ import {
   BuildingLibraryIcon,
 } from "@heroicons/react/24/solid";
 import { Footer } from "@/widgets/layout";
+import { useSelector } from "react-redux";
+import { authUser } from "@/Features/User/UserSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Profile() {
+  const navigate = useNavigate();
+
+  const user = useSelector(authUser);
+
   return (
     <>
       <section className="relative block h-[50vh]">
@@ -28,7 +36,7 @@ export function Profile() {
                 </div>
                 <div className="flex flex-col mt-2">
                   <Typography variant="h4" color="blue-gray">
-                    Jenna Stones
+                     Jone Doe
                   </Typography>
                   <Typography variant="paragraph" color="gray" className="!mt-0 font-normal">jena@mail.com</Typography>
                 </div>

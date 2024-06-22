@@ -1,4 +1,5 @@
 import { Home, Profile, SignIn, SignUp } from "@/pages";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export const routes = [
   {
@@ -9,7 +10,11 @@ export const routes = [
   {
     name: "profile",
     path: "/profile",
-    element: <Profile />,
+    element: (
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    ),
   },
   {
     name: "Sign In",

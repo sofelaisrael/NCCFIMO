@@ -10,6 +10,8 @@ import {
 } from "@material-tailwind/react";
 import logo from "../../assets/logo.png"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { authUser } from "@/Features/User/UserSlice";
+import { useSelector } from "react-redux";
 
 export function Navbar({ brandName, routes, action }) {
   const [openNav, setOpenNav] = React.useState(false);

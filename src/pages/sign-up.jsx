@@ -4,7 +4,7 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { RxCaretDown } from "react-icons/rx"
 import { useDispatch } from "react-redux";
@@ -16,6 +16,7 @@ import toast, { Toaster } from 'react-hot-toast';
 export function SignUp() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const sub = [
     {
       zone: 'Owerri Municipal',
@@ -227,7 +228,10 @@ export function SignUp() {
       }
   
       const result = await response.json();
-      console.log(result);
+
+      if(dispatch(register(result))){
+        navigate("/profile");
+      }
   
       toast.success('Account Created Successfully');
     } catch (error) {

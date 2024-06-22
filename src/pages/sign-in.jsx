@@ -5,13 +5,17 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch } from "react-redux";
+import { login } from "@/Features/User/UserSlice";
 
 
 
 export function SignIn() {
+  const dispatch = useDispatch();
+  const navigator = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const [terms, setTerms] = useState(true);
@@ -43,7 +47,13 @@ export function SignIn() {
       }
   
       const result = await response.json();
+
+     if( dispatch(login(result))){
+       navigator("/profile");
+     }
+
       console.log(result);
+
   
       toast.success('Login Successfully');
     } catch (error) {
@@ -92,28 +102,6 @@ export function SignIn() {
               onChange={e => setPassword(e.target.value)}
             />
           </div>
-
-          <Checkbox
-            className="inp"
-            label={
-              <Typography
-              variant="small"
-                color="gray"
-                className="flex items-center justify-start font-medium tex"
-              >
-                <span className="tex">I agree to the&nbsp;</span>
-
-                <a
-                  href="#"
-                  className="font-normal text-black transition-colors hover:text-gray-900 underline tex"
-                >
-                  Terms and Conditions
-                </a>
-              </Typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
-            checked={terms}
-          />
           <Button className="mt-3" onClick={handleSubmit} fullWidth>
             Sign In
           </Button>
