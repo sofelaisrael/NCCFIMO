@@ -86,7 +86,7 @@ export function Profile() {
                   artist of considerable range.
                 </Typography>
                 <div className="flex justify-between">
-                  <Button variant="text" onClick={handleClick}>Back to Home</Button>
+                  <Button variant="text" onClick={handleClick} className="mr-4">Back to Home</Button>
                   <Button variant="filled" color="red" onClick={handleLogout}>Logout</Button>
                 </div>
               </div>

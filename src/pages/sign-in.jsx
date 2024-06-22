@@ -15,7 +15,7 @@ import { login } from "@/Features/User/UserSlice";
 
 export function SignIn() {
   const dispatch = useDispatch();
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const [terms, setTerms] = useState(true);
@@ -49,7 +49,7 @@ export function SignIn() {
       const result = await response.json();
 
      if( dispatch(login(result))){
-       navigator("/profile");
+       navigate("/profile");
      }
 
       console.log(result);
