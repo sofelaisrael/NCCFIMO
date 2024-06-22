@@ -54,6 +54,8 @@ export function SignIn() {
 
 
   return (
+    <>
+    <Toaster />
     <section className="m-3 md:m-8 flex h-[90vh] justify-between gap-4">
       <div className="w-full lg:w-[60%]">
         <div className="text-center">
@@ -154,6 +156,7 @@ export function SignIn() {
       </div>
 
     </section>
+    </>
   );
 }
 
