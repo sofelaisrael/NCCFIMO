@@ -5,15 +5,25 @@ import {
   BuildingLibraryIcon,
 } from "@heroicons/react/24/solid";
 import { Footer } from "@/widgets/layout";
-import { useSelector } from "react-redux";
-import { authUser } from "@/Features/User/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { authUser, logout } from "@/Features/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export function Profile() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const user = useSelector(authUser);
+  const user = useSelector(state => state.user.user.user);
+
+  const handleClick = () => {
+    navigate("/");
+  }
+
+  const handleLogout =() => {
+    dispatch(logout());
+    navigate("/");
+  }
 
   return (
     <>
@@ -27,90 +37,42 @@ export function Profile() {
             <div className="flex flex-col lg:flex-row justify-between">
               <div className="relative flex gap-6 items-start">
                 <div className="-mt-20 w-40">
-                  <Avatar
+                  {/* <Avatar
                     src="/img/team-5.png"
                     alt="Profile picture"
                     variant="circular"
                     className="h-full w-full"
-                  />
+                  /> */}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" className="bg-white rounded-full" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                  </svg>
                 </div>
                 <div className="flex flex-col mt-2">
                   <Typography variant="h4" color="blue-gray">
-                     Jone Doe
+                    {user.name}
                   </Typography>
-                  <Typography variant="paragraph" color="gray" className="!mt-0 font-normal">jena@mail.com</Typography>
+                  <Typography variant="paragraph" color="gray" className="!mt-0 font-normal">{user.email}</Typography>
                 </div>
-              </div>
-
-              <div className="mt-10 mb-10 flex lg:flex-col justify-between items-center lg:justify-end lg:mb-0 lg:px-4 flex-wrap lg:-mt-5">
-                <Button className="bg-gray-900 w-fit lg:ml-auto">Connect</Button>
-                <div className="flex justify-start py-4 pt-8 lg:pt-4">
-                  <div className="mr-4 p-3 text-center">
-                    <Typography
-                      variant="lead"
-                      color="blue-gray"
-                      className="font-bold uppercase"
-                    >
-                      22
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-normal text-blue-gray-500"
-                    >
-                      Friends
-                    </Typography>
-                  </div>
-                  <div className="mr-4 p-3 text-center">
-                    <Typography
-                      variant="lead"
-                      color="blue-gray"
-                      className="font-bold uppercase"
-                    >
-                      10
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-normal text-blue-gray-500"
-                    >
-                      Photos
-                    </Typography>
-                  </div>
-                  <div className="p-3 text-center lg:mr-4">
-                    <Typography
-                      variant="lead"
-                      color="blue-gray"
-                      className="font-bold uppercase"
-                    >
-                      89
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-normal text-blue-gray-500"
-                    >
-                      Comments
-                    </Typography>
-                  </div>
-                </div>
-
               </div>
             </div>
-            <div className="-mt-4 container space-y-2">
+            <div className="mt-4 container space-y-2">
               <div className="flex items-center gap-2">
                 <MapPinIcon className="-mt-px h-4 w-4 text-blue-gray-500" />
                 <Typography className="font-medium text-blue-gray-500">
-                  Los Angeles, California
+                  {user.state}, Nigeria
                 </Typography>
               </div>
               <div className="flex items-center gap-2">
-                <BriefcaseIcon className="-mt-px h-4 w-4 text-blue-gray-500" />
+                <MapPinIcon className="-mt-px h-4 w-4 text-blue-gray-500" />
                 <Typography className="font-medium text-blue-gray-500">
-                  Solution Manager - Creative Tim Officer
+                  Zone - {user.zone}
                 </Typography>
               </div>
               <div className="flex items-center gap-2">
-                <BuildingLibraryIcon className="-mt-px h-4 w-4 text-blue-gray-500" />
+                <MapPinIcon className="-mt-px h-4 w-4 text-blue-gray-500" />
                 <Typography className="font-medium text-blue-gray-500">
-                  University of Computer Science
+                  Sub-zone - {user.subzone}
                 </Typography>
               </div>
             </div>
@@ -123,7 +85,10 @@ export function Profile() {
                   warm, intimate feel with a solid groove structure. An
                   artist of considerable range.
                 </Typography>
-                <Button variant="text">Show more</Button>
+                <div className="flex justify-between">
+                  <Button variant="text" onClick={handleClick}>Back to Home</Button>
+                  <Button variant="filled" color="red" onClick={handleLogout}>Logout</Button>
+                </div>
               </div>
             </div>
           </div>
