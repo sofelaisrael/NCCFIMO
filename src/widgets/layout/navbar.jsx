@@ -24,7 +24,7 @@ export function Navbar({ brandName, routes, action }) {
   }, []);
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 text-inherit lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mb-4 mt-2 flex flex-col gap-2 text-inherit lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 dark:text-light">
       {routes.map(({ name, path, icon, href, target }) => (
         <Typography
           key={name}
@@ -57,36 +57,38 @@ export function Navbar({ brandName, routes, action }) {
 
   return (
     <MTNavbar color="transparent" className="p-3 up">
-      <div className="container mx-auto flex items-center justify-between text-white">
-        <Link to="/">
-          <div className="h-[90px]">
-            <img className="h-full" src={logo} alt="" />
-          </div>
-        </Link>
-        <div className="hidden lg:block">{navList}</div>
-        
-        <IconButton
-          variant="text"
-          size="sm"
-          color="white"
-          className="ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          onClick={() => setOpenNav(!openNav)}
-        >
-          {openNav ? (
-            <XMarkIcon strokeWidth={2} className="h-6 w-6" />
-          ) : (
-            <Bars3Icon strokeWidth={2} className="h-6 w-6" />
-          )}
-        </IconButton>
-      </div>
-      <MobileNav
-        className="rounded-xl bg-white px-4 pt-2 pb-4 text-blue-gray-900"
-        open={openNav}
-      >
-        <div className="container mx-auto">
-          {navList}
+      <div>
+        <div className="container mx-auto flex items-center justify-between text-white">
+          <Link to="/">
+            <div className="h-[90px]">
+              <img className="h-full" src={logo} alt="" />
+            </div>
+          </Link>
+          <div className="hidden lg:block">{navList}</div>
+
+          <IconButton
+            variant="text"
+            size="sm"
+            color="white"
+            className="ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+            onClick={() => setOpenNav(!openNav)}
+          >
+            {openNav ? (
+              <XMarkIcon strokeWidth={2} className="h-6 w-6" />
+            ) : (
+              <Bars3Icon strokeWidth={2} className="h-6 w-6" />
+            )}
+          </IconButton>
         </div>
-      </MobileNav>
+        <MobileNav
+          className="rounded-xl bg-white px-4 pt-2 pb-4 text-blue-gray-900"
+          open={openNav}
+        >
+          <div className="container mx-auto">
+            {navList}
+          </div>
+        </MobileNav>
+      </div>
     </MTNavbar>
   );
 }
